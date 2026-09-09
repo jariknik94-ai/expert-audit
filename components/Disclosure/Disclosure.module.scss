@@ -1,0 +1,148 @@
+.disclosure {
+  border-bottom: 1px solid var(--line);
+
+  summary {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 82px;
+    padding: 22px 0;
+
+    cursor: pointer;
+    list-style: none;
+
+    strong {
+      flex: 1;
+      min-width: 0;
+      padding-right: 30px;
+
+      font-size: 20px;
+      line-height: 1.35;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    i {
+      flex: 0 0 36px;
+      width: 36px;
+      height: 36px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border: 1px solid var(--line);
+      border-radius: 50%;
+
+      font-size: 22px;
+      font-style: normal;
+      font-weight: 400;
+      color: var(--ink);
+
+      transition:
+        transform 0.25s ease,
+        background-color 0.25s ease,
+        border-color 0.25s ease;
+    }
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &:hover {
+      strong {
+        color: var(--blue);
+      }
+
+      i {
+        border-color: var(--blue);
+        background: var(--soft);
+      }
+    }
+  }
+
+  &[open] {
+    summary {
+      i {
+        transform: rotate(45deg);
+        background: var(--soft);
+        border-color: var(--blue);
+      }
+    }
+  }
+}
+
+.content {
+  padding: 0 0 30px;
+
+  p {
+    margin: 0 0 16px;
+    color: var(--muted);
+    line-height: 1.7;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  ul,
+  ol {
+    margin: 0;
+    padding-left: 22px;
+    color: var(--muted);
+  }
+
+  li {
+    margin-bottom: 9px;
+    line-height: 1.65;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  strong {
+    color: var(--ink);
+  }
+
+  a {
+    color: var(--blue);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+@media (max-width: 640px) {
+  .disclosure {
+    summary {
+      min-height: 70px;
+      padding: 18px 0;
+
+      strong {
+        padding-right: 20px;
+        font-size: 17px;
+        line-height: 1.35;
+      }
+
+      i {
+        flex-basis: 32px;
+        width: 32px;
+        height: 32px;
+        font-size: 20px;
+      }
+    }
+  }
+
+  .content {
+    padding-bottom: 24px;
+
+    p {
+      line-height: 1.6;
+    }
+
+    ul,
+    ol {
+      padding-left: 20px;
+    }
+  }
+}

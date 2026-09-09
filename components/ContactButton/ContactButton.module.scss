@@ -1,0 +1,5 @@
+.floatingContact {
+  position: fixed; right: 25px; bottom: 25px; z-index: 30; width: 56px; height: 56px;
+  border-radius: 50%; background: var(--blue); color: #fff; display: grid;
+  place-items: center; font-size: 23px; box-shadow: 0 12px 35px rgba(47, 111, 237, 0.35);
+}

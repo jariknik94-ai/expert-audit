@@ -1,0 +1,309 @@
+.navbar {
+  width: 100%;
+}
+
+.navbarInner {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 76px;
+  gap: 40px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  color: inherit;
+  text-decoration: none;
+
+  flex-shrink: 0;
+}
+
+.brandMark {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 0;
+  border-radius: 10px;
+
+  overflow: hidden;
+
+  flex-shrink: 0;
+
+  img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+  }
+}
+
+.brandText {
+  display: flex;
+  flex-direction: column;
+
+  font-size: 18px;
+  line-height: 1.1;
+  white-space: nowrap;
+
+  strong {
+    font-weight: 800;
+  }
+
+  small {
+    display: block;
+
+    margin-top: 5px;
+
+    font-size: 8px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+
+    opacity: 0.65;
+  }
+}
+
+.navContent {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+
+  a {
+    position: relative;
+
+    color: inherit;
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    transition:
+      color 0.2s ease,
+      opacity 0.2s ease;
+
+    &::after {
+      content: "";
+
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -7px;
+
+      height: 2px;
+
+      background: currentColor;
+
+      transform: scaleX(0);
+      transform-origin: center;
+
+      transition: transform 0.2s ease;
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &:hover::after,
+    &.active::after {
+      transform: scaleX(1);
+    }
+  }
+}
+
+.themeButton {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 1px solid currentColor;
+  border-radius: 50%;
+
+  color: inherit;
+  background: transparent;
+
+  cursor: pointer;
+
+  font-size: 17px;
+  line-height: 1;
+
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease,
+    background-color 0.25s ease;
+
+  &:hover {
+    transform: rotate(15deg) scale(1.05);
+    opacity: 0.75;
+  }
+}
+
+.menuButton {
+  display: none;
+
+  width: 42px;
+  height: 42px;
+
+  padding: 0;
+
+  border: 0;
+  background: transparent;
+
+  cursor: pointer;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  span {
+    width: 23px;
+    height: 2px;
+
+    display: block;
+
+    background: currentColor;
+    border-radius: 2px;
+
+    transition:
+      transform 0.25s ease,
+      opacity 0.25s ease;
+  }
+}
+
+.menuButtonActive {
+  span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  span:nth-child(2) {
+    opacity: 0;
+  }
+
+  span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+}
+
+@media (max-width: 1000px) {
+  .navLinks {
+    gap: 18px;
+
+    a {
+      font-size: 13px;
+    }
+  }
+
+  .navbarInner {
+    gap: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbarInner {
+    min-height: 68px;
+  }
+
+  .menuButton {
+    display: flex;
+  }
+
+  .navContent {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    right: 0;
+    z-index: 100;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+
+    padding: 20px;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+
+    background: #050e1a;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+
+    transition:
+      opacity 0.25s ease,
+      visibility 0.25s ease,
+      transform 0.25s ease;
+  }
+
+  .navContentOpen {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .navLinks {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+
+    a {
+      padding: 12px 4px;
+
+      font-size: 14px;
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  .themeButton {
+    align-self: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .brandText {
+    font-size: 16px;
+
+    small {
+      font-size: 7px;
+    }
+  }
+
+  .brandMark {
+    width: 38px;
+    height: 38px;
+
+    img {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  .navContent {
+    left: 10px;
+    right: 10px;
+  }
+}

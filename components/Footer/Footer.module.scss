@@ -1,0 +1,179 @@
+.footer {
+  position: relative;
+
+  background: #050e1a;
+  color: #c3cedd;
+  padding: 65px 0 25px;
+
+  h3 {
+    color: #fff;
+    font-size: 14px;
+  }
+}
+
+.footerGrid {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr 1fr;
+  gap: 60px;
+
+  a {
+    display: block;
+    margin: 7px 0;
+  }
+
+  p {
+    color: #8fa0b7;
+  }
+}
+
+.footerBrand {
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.footerBottom {
+  border-top: 1px solid #1d2a3b;
+  margin-top: 45px;
+  padding-top: 18px;
+
+  display: flex;
+  justify-content: space-between;
+
+  font-size: 11px;
+  color: #73849a;
+}
+
+.cookieNotice {
+  margin-top: 18px;
+
+  color: #5f6f84;
+  font-size: 9px;
+  line-height: 1.5;
+  text-align: center;
+
+  a {
+    color: #73849a;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #aebbd0;
+    }
+  }
+}
+
+/* Кнопки связи */
+.contactLinks {
+  position: absolute;
+  right: 32px;
+  bottom: 82px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.contactButton {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 !important;
+
+  border: 1px solid #1d2a3b;
+  border-radius: 12px;
+
+  color: #c3cedd;
+  background: #0a1624;
+
+  transition:
+    transform 0.25s ease,
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    color: #fff;
+    background: #14243a;
+    border-color: #344b68;
+  }
+
+  &:active {
+    transform: translateY(-1px);
+  }
+}
+
+.contactInfo {
+  a {
+    display: block;
+    margin: 7px 0;
+    color: inherit;
+  }
+
+  p {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 900px) {
+  .footerGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .contactLinks {
+    position: static;
+
+    margin-top: 30px;
+    padding-top: 0;
+
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer {
+    padding: 50px 0 25px;
+  }
+
+  .footerGrid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .footerBottom {
+    display: grid;
+    gap: 8px;
+  }
+
+  .cookieNotice {
+    margin-top: 16px;
+    font-size: 8px;
+    line-height: 1.5;
+  }
+
+  .contactLinks {
+    position: static;
+
+    margin-top: 25px;
+    padding-top: 0;
+
+    justify-content: flex-start;
+  }
+
+  .contactButton {
+    width: 40px;
+    height: 40px;
+  }
+}

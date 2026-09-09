@@ -1,0 +1,65 @@
+.serviceDetails {
+  display: grid;
+  gap: 30px;
+}
+
+.serviceDetail {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 40px;
+  padding: 55px 0;
+  border-bottom: 1px solid var(--line);
+
+  h2 {
+    font-size: 42px;
+    line-height: 1.05;
+    margin: 5px 0 15px;
+  }
+
+  h3 {
+    margin-top: 35px;
+  }
+
+  ul {
+    padding-left: 20px;
+    color: #526078;
+  }
+
+  li {
+    margin: 7px 0;
+  }
+}
+
+.serviceDetailNumber {
+  font-size: 48px;
+  font-weight: 800;
+  color: #c8d7ee;
+}
+
+.resultBox,
+.priceBox {
+  margin-top: 30px;
+  padding: 23px;
+  background: var(--soft);
+  border-radius: 15px;
+
+  p {
+    margin: 4px 0;
+    color: #526078;
+  }
+}
+
+@media (max-width: 640px) {
+  .serviceDetail {
+    grid-template-columns: 1fr;
+    gap: 8px;
+
+    h2 {
+      font-size: 35px;
+    }
+  }
+
+  .serviceDetailNumber {
+    font-size: 35px;
+  }
+}
