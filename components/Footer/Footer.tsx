@@ -43,7 +43,7 @@ export function Footer() {
             <p>
               Кемерово, проспект Московский,
               <br />
-              д. 18 к. 3
+              д. 18 к. 3 кв. 108
             </p>
 
             <Link href="/contacts" className={styles.allContacts}>
@@ -53,28 +53,7 @@ export function Footer() {
         </div>
       </div>
 
-      <div className={`container ${styles.footerBottom}`}>
-        <span>
-          © 2023-{new Date().getFullYear()} Все права защищены. ООО
-          «Эксперт-Аудит»
-        </span>
-
-        <span>
-          Информация сайта не заменяет юридическую консультацию.
-        </span>
-      </div>
-
-      <div className={`container ${styles.cookieNotice}`}>
-        Продолжая использовать наш сайт, вы даете согласие на обработку
-        файлов cookies и других пользовательских данных, в соответствии с{" "}
-        <Link href="/privacy">
-          политикой обработки персональных данных
-        </Link>
-        .
-      </div>
-
-      {/* Кнопки связи */}
-      <div className={styles.contactLinks}>
+      <div className={`container ${styles.contactLinks}`}>
         <a
           href="https://wa.me/79236174055"
           target="_blank"
@@ -110,6 +89,26 @@ export function Footer() {
         >
           <FaEnvelope />
         </a>
+      </div>
+
+      <div className={`container ${styles.footerBottom}`}>
+        <span>
+          © 2023–{new Date().getFullYear()} Все права защищены. ООО
+          «Эксперт-Аудит»
+        </span>
+
+        <span>
+          Информация сайта не заменяет юридическую консультацию.
+        </span>
+      </div>
+
+      <div className={`container ${styles.cookieNotice}`}>
+        Продолжая использовать наш сайт, вы даете согласие на обработку
+        файлов cookies и других пользовательских данных, в соответствии с{" "}
+        <Link href="/privacy">
+          политикой обработки персональных данных
+        </Link>
+        .
       </div>
     </footer>
   );

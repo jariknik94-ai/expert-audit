@@ -59,7 +59,7 @@ export default function ContactsPage() {
                   <span className={styles.label}>Адрес офиса</span>
 
                   <address>
-                    650023, Кемеровская область — Кузбасс,
+                    650023, Кемеровская область – Кузбасс,
                     <br />
                     г. Кемерово, проспект Московский,
                     <br />
@@ -109,7 +109,7 @@ export default function ContactsPage() {
 
               <div className={styles.mapFooter}>
                 <span>
-                  Кемерово, проспект Московский, 18 к. 3
+                  Кемерово, проспект Московский, д. 18 к. 3 кв. 108
                 </span>
 
                 <a

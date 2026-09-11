@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import styles from "./DocumentsModal.module.scss";
 
@@ -10,13 +10,11 @@ type DocumentItem = {
   files: string[];
 };
 
-interface DocumentsModalProps {
+type DocumentsModalProps = {
   document: DocumentItem | null;
   personName: string;
   onClose: () => void;
-}
-
-const ANIMATION_DURATION = 480;
+};
 
 export function DocumentsModal({
   document: selectedDocument,
@@ -24,179 +22,163 @@ export function DocumentsModal({
   onClose,
 }: DocumentsModalProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState<"next" | "previous">("next");
-  const [isAnimating, setIsAnimating] = useState(false);
+  const [direction, setDirection] =
+    useState<"next" | "previous">("next");
 
-  const animationTimeoutRef = useRef<number | null>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const previousFocusRef = useRef<HTMLElement | null>(null);
 
-  const totalFiles = selectedDocument?.files.length ?? 0;
+  const isOpen = selectedDocument !== null;
+  const files = selectedDocument?.files ?? [];
 
-  /*
-   * Полностью очищаем таймер анимации при размонтировании
-   * или закрытии модального окна.
-   */
-  const clearAnimationTimeout = useCallback(() => {
-    if (animationTimeoutRef.current !== null) {
-      window.clearTimeout(animationTimeoutRef.current);
-      animationTimeoutRef.current = null;
-    }
-  }, []);
+  const currentFile = files[currentIndex] ?? null;
 
-  /*
-   * Смена страницы.
-   *
-   * Индекс меняется сразу, а CSS-анимация отвечает
-   * за плавное появление нового изображения.
-   *
-   * Важно: здесь нет сброса currentIndex в 0.
-   */
-  const changePage = useCallback(
-    (nextIndex: number, nextDirection: "next" | "previous") => {
-      if (
-        !selectedDocument ||
-        totalFiles <= 1 ||
-        isAnimating ||
-        nextIndex === currentIndex
-      ) {
-        return;
-      }
-
-      clearAnimationTimeout();
-
-      setDirection(nextDirection);
-      setIsAnimating(true);
-      setCurrentIndex(nextIndex);
-
-      animationTimeoutRef.current = window.setTimeout(() => {
-        setIsAnimating(false);
-        animationTimeoutRef.current = null;
-      }, ANIMATION_DURATION);
-    },
-    [
-      selectedDocument,
-      totalFiles,
-      isAnimating,
-      currentIndex,
-      clearAnimationTimeout,
-    ],
-  );
-
-  const goPrevious = useCallback(() => {
-    if (!selectedDocument || totalFiles <= 1) {
-      return;
-    }
-
-    const nextIndex =
-      currentIndex > 0
-        ? currentIndex - 1
-        : totalFiles - 1;
-
-    changePage(nextIndex, "previous");
-  }, [
-    selectedDocument,
-    totalFiles,
-    currentIndex,
-    changePage,
-  ]);
-
-  const goNext = useCallback(() => {
-    if (!selectedDocument || totalFiles <= 1) {
-      return;
-    }
-
-    const nextIndex =
-      currentIndex < totalFiles - 1
-        ? currentIndex + 1
-        : 0;
-
-    changePage(nextIndex, "next");
-  }, [
-    selectedDocument,
-    totalFiles,
-    currentIndex,
-    changePage,
-  ]);
-
-  /*
-   * Сбрасываем страницу только тогда, когда открывается
-   * другой документ.
-   *
-   * Перелистывание внутри одного документа сюда
-   * не попадает и поэтому currentIndex не сбрасывается.
-   */
   useEffect(() => {
     if (!selectedDocument) {
+      setCurrentIndex(0);
+      setDirection("next");
       return;
     }
-
-    clearAnimationTimeout();
 
     setCurrentIndex(0);
     setDirection("next");
-    setIsAnimating(false);
-  }, [selectedDocument, clearAnimationTimeout]);
+  }, [selectedDocument]);
 
-  /*
-   * Блокируем прокрутку страницы и подключаем
-   * управление с клавиатуры.
-   */
   useEffect(() => {
-    if (!selectedDocument) {
+    if (!isOpen) {
       return;
     }
 
-    const originalOverflow = window.document.body.style.overflow;
+    previousFocusRef.current =
+      document.activeElement as HTMLElement | null;
 
-    window.document.body.style.overflow = "hidden";
+    const previousOverflow = document.body.style.overflow;
+
+    document.body.style.overflow = "hidden";
+
+    requestAnimationFrame(() => {
+      closeButtonRef.current?.focus();
+    });
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+
+      previousFocusRef.current?.focus();
+      previousFocusRef.current = null;
+    };
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (!isOpen) {
+      return;
+    }
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
+        event.preventDefault();
         onClose();
         return;
       }
 
       if (event.key === "ArrowLeft") {
         event.preventDefault();
-        goPrevious();
+
+        if (currentIndex > 0) {
+          setDirection("previous");
+          setCurrentIndex((index) => index - 1);
+        }
+
         return;
       }
 
       if (event.key === "ArrowRight") {
         event.preventDefault();
-        goNext();
+
+        if (currentIndex < files.length - 1) {
+          setDirection("next");
+          setCurrentIndex((index) => index + 1);
+        }
+
+        return;
+      }
+
+      if (event.key !== "Tab") {
+        return;
+      }
+
+      const modal = modalRef.current;
+
+      if (!modal) {
+        return;
+      }
+
+      const focusableElements =
+        modal.querySelectorAll<HTMLElement>(
+          [
+            "button:not([disabled])",
+            "a[href]",
+            "input:not([disabled])",
+            "select:not([disabled])",
+            "textarea:not([disabled])",
+            "[tabindex]:not([tabindex='-1'])",
+          ].join(","),
+        );
+
+      if (focusableElements.length === 0) {
+        event.preventDefault();
+        return;
+      }
+
+      const firstElement = focusableElements[0];
+      const lastElement =
+        focusableElements[focusableElements.length - 1];
+
+      if (
+        event.shiftKey &&
+        document.activeElement === firstElement
+      ) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (
+        !event.shiftKey &&
+        document.activeElement === lastElement
+      ) {
+        event.preventDefault();
+        firstElement.focus();
       }
     };
 
-    window.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      window.document.body.style.overflow = originalOverflow;
-      window.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [
-    selectedDocument,
-    onClose,
-    goPrevious,
-    goNext,
-  ]);
+  }, [isOpen, currentIndex, files.length, onClose]);
 
-  /*
-   * Очистка таймера при размонтировании компонента.
-   */
-  useEffect(() => {
-    return () => {
-      clearAnimationTimeout();
-    };
-  }, [clearAnimationTimeout]);
-
-  if (!selectedDocument || totalFiles === 0) {
+  if (!selectedDocument || !currentFile) {
     return null;
   }
 
-  const currentFile = selectedDocument.files[currentIndex];
-  const showNavigation = totalFiles > 1;
+  const handlePrevious = () => {
+    if (currentIndex === 0) {
+      return;
+    }
 
-  const handleBackdropClick = (
+    setDirection("previous");
+    setCurrentIndex((index) => index - 1);
+  };
+
+  const handleNext = () => {
+    if (currentIndex === files.length - 1) {
+      return;
+    }
+
+    setDirection("next");
+    setCurrentIndex((index) => index + 1);
+  };
+
+  const handleOverlayClick = (
     event: React.MouseEvent<HTMLDivElement>,
   ) => {
     if (event.target === event.currentTarget) {
@@ -207,45 +189,55 @@ export function DocumentsModal({
   return (
     <div
       className={styles.overlay}
-      role="dialog"
-      aria-modal="true"
-      aria-label={`${selectedDocument.title} — ${personName}`}
-      onMouseDown={handleBackdropClick}
+      onMouseDown={handleOverlayClick}
     >
-      <div className={styles.modal}>
+      <div
+        ref={modalRef}
+        className={styles.modal}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="documents-modal-title"
+        aria-describedby="documents-modal-description"
+      >
         <div className={styles.header}>
           <div>
-            <p className="eyebrow">{personName}</p>
+            <p
+              id="documents-modal-description"
+              className="eyebrow"
+            >
+              {personName}
+            </p>
 
-            <h2>{selectedDocument.title}</h2>
+            <h2 id="documents-modal-title">
+              {selectedDocument.title}
+            </h2>
           </div>
 
           <button
+            ref={closeButtonRef}
             type="button"
             className={styles.close}
             onClick={onClose}
-            aria-label="Закрыть документ"
+            aria-label="Закрыть окно просмотра документа"
           >
             ×
           </button>
         </div>
 
         <div className={styles.viewer}>
-          {showNavigation && (
-            <button
-              type="button"
-              className={`${styles.navigation} ${styles.previous}`}
-              onClick={goPrevious}
-              disabled={isAnimating}
-              aria-label="Предыдущая страница"
-            >
-              ‹
-            </button>
-          )}
+          <button
+            type="button"
+            className={`${styles.navigation} ${styles.previous}`}
+            onClick={handlePrevious}
+            disabled={currentIndex === 0}
+            aria-label="Предыдущая страница документа"
+          >
+            ‹
+          </button>
 
           <div className={styles.imageWrapper}>
             <div
-              key={currentIndex}
+              key={`${currentIndex}-${direction}`}
               className={`${styles.imageSlide} ${
                 direction === "next"
                   ? styles.slideNext
@@ -258,54 +250,48 @@ export function DocumentsModal({
                   currentIndex + 1
                 }`}
                 fill
-                sizes="(max-width: 640px) 92vw, 1000px"
+                sizes="(max-width: 768px) 80vw, 850px"
                 className={styles.image}
                 priority
               />
             </div>
           </div>
 
-          {showNavigation && (
-            <button
-              type="button"
-              className={`${styles.navigation} ${styles.next}`}
-              onClick={goNext}
-              disabled={isAnimating}
-              aria-label="Следующая страница"
-            >
-              ›
-            </button>
-          )}
+          <button
+            type="button"
+            className={`${styles.navigation} ${styles.next}`}
+            onClick={handleNext}
+            disabled={currentIndex === files.length - 1}
+            aria-label="Следующая страница документа"
+          >
+            ›
+          </button>
         </div>
 
         <div className={styles.footer}>
-          {showNavigation ? (
-            <>
-              <span>
-                {currentIndex + 1} / {totalFiles}
-              </span>
+          <span>
+            Страница {currentIndex + 1} из {files.length}
+          </span>
 
-              <div className={styles.footerActions}>
-                <button
-                  type="button"
-                  onClick={goPrevious}
-                  disabled={isAnimating}
-                >
-                  Предыдущая
-                </button>
+          <div className={styles.footerActions}>
+            <button
+              type="button"
+              onClick={handlePrevious}
+              disabled={currentIndex === 0}
+              aria-label="Перейти к предыдущей странице"
+            >
+              Назад
+            </button>
 
-                <button
-                  type="button"
-                  onClick={goNext}
-                  disabled={isAnimating}
-                >
-                  Следующая
-                </button>
-              </div>
-            </>
-          ) : (
-            <span>Документ</span>
-          )}
+            <button
+              type="button"
+              onClick={handleNext}
+              disabled={currentIndex === files.length - 1}
+              aria-label="Перейти к следующей странице"
+            >
+              Далее
+            </button>
+          </div>
         </div>
       </div>
     </div>

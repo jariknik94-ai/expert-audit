@@ -73,6 +73,7 @@ export function DocumentsSection({
                       {hasFiles ? (
                         <button
                           type="button"
+                          aria-label={`Открыть документ «${document.title}» — ${person.name}`}
                           onClick={() =>
                             setSelectedDocument({
                               document,
