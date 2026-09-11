@@ -167,6 +167,8 @@
   border: 0;
   background: transparent;
 
+  color: inherit;
+
   cursor: pointer;
 
   flex-direction: column;
@@ -240,10 +242,13 @@
 
     padding: 20px;
 
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 16px;
 
     background: #050e1a;
+    color: #ffffff;
+
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
 
     opacity: 0;
     visibility: hidden;
@@ -268,18 +273,41 @@
     gap: 0;
 
     a {
+      display: block;
+
       padding: 12px 4px;
 
+      color: #ffffff;
+
       font-size: 14px;
+      font-weight: 500;
+
+      opacity: 0.9;
 
       &::after {
         display: none;
+      }
+
+      &:hover {
+        opacity: 1;
+      }
+
+      &.active {
+        opacity: 1;
       }
     }
   }
 
   .themeButton {
     align-self: flex-start;
+
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.3);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.08);
+      opacity: 1;
+    }
   }
 }
 

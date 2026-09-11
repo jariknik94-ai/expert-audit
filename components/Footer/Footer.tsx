@@ -26,6 +26,7 @@ export function Footer() {
           <Link href="/services">Услуги</Link>
           <Link href="/team">Сотрудники</Link>
           <Link href="/disclosure">Раскрытие информации</Link>
+          <Link href="/contacts">Контакты</Link>
           <Link href="/privacy">Политика</Link>
         </div>
 
@@ -40,14 +41,23 @@ export function Footer() {
             </a>
 
             <p>
-              Кемерово, пр-кт Московский, д. 18 к. 3, кв. 108
+              Кемерово, проспект Московский,
+              <br />
+              д. 18 к. 3
             </p>
+
+            <Link href="/contacts" className={styles.allContacts}>
+              Все контакты →
+            </Link>
           </div>
         </div>
       </div>
 
       <div className={`container ${styles.footerBottom}`}>
-        <span>© 2023-{new Date().getFullYear()} Все права защищены. ООО «Эксперт-Аудит»</span>
+        <span>
+          © 2023-{new Date().getFullYear()} Все права защищены. ООО
+          «Эксперт-Аудит»
+        </span>
 
         <span>
           Информация сайта не заменяет юридическую консультацию.

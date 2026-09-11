@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-// @ts-expect-error: TypeScript does not resolve SCSS side-effect imports without a declaration file.
+// @ts-ignore
 import "./globals.scss";
 import { Header } from "@/components/Header/Header";
 import { Footer } from "@/components/Footer/Footer";
-import { ContactButton } from "@/components/ContactButton/ContactButton";
 import { CookieNotice } from "@/components/CookieNotice/CookieNotice";
 
 export const metadata: Metadata = {
@@ -30,7 +29,6 @@ export default function RootLayout({
       <body>
         <Header />
         <main>{children}</main>
-        <ContactButton />
         <CookieNotice />
         <Footer />
       </body>

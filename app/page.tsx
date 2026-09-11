@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { SectionTitle } from "@/components/SectionTitle/SectionTitle";
 import { ServiceCard } from "@/components/ServiceCard/ServiceCard";
+import { Clients } from "@/components/Clients/Clients";
 import { services } from "@/lib/data";
 import styles from "./page.module.scss";
 
@@ -98,19 +99,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      <section className={`section ${styles.clients}`}>
-        <div className="container">
-          <SectionTitle kicker="НАШИ КЛИЕНТЫ" title="Работаем с компаниями разных отраслей" />
-          <p className={styles.sectionSubtitle}>Логотипы и наименования клиентов размещаются только при наличии соответствующего разрешения.</p>
-          <div className={styles.clientGrid}>
-            {["ПРОИЗВОДСТВО", "ТОРГОВЛЯ", "СТРОИТЕЛЬСТВО", "УСЛУГИ", "ФИНАНСЫ", "ДРУГИЕ ОТРАСЛИ"].map(x => (
-              <div className={styles.clientPlaceholder} key={x}>{x}</div>
-            ))}
-          </div>
-        </div>
-      </section>
-
+      <Clients />
       <section className={styles.ctaSection} id="contact">
         <div className={`container ${styles.ctaInner}`}>
           <div><p className="eyebrow">ГОТОВЫ ОБСУДИТЬ ЗАДАЧУ?</p><h2>Расскажите, что происходит в вашем бизнесе.</h2><p>Мы поможем определить подходящий формат работы и ответим на вопросы.</p></div>

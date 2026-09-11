@@ -10,8 +10,9 @@ const navItems = [
   { href: "/services", label: "Услуги" },
   { href: "/team", label: "Сотрудники" },
   { href: "/disclosure", label: "Раскрытие информации" },
-  // { href: "/privacy", label: "Политика" },
+  { href: "/contacts", label: "Контакты" },
 ];
+
 
 export function Navbar() {
   const pathname = usePathname();

@@ -1,5 +1,8 @@
 import Image from "next/image";
+
 import { SectionTitle } from "@/components/SectionTitle/SectionTitle";
+import { DocumentsSection } from "@/components/DocumentsSection/DocumentsSection";
+
 import styles from "./team.module.scss";
 
 export const metadata = {
@@ -11,7 +14,8 @@ const team = [
     name: "Елена Александровна Бугасова",
     role: "Директор ООО «Эксперт-Аудит»",
     photo: "/images/team/bugasova3.jpg",
-    documentPhoto: "/images/team/bugasova1.jpg",
+    documentPhoto: "/images/team/bugasovaFace.jpg",
+
     text: (
       <>
         <p>
@@ -31,26 +35,40 @@ const team = [
         </p>
       </>
     ),
+
     documents: [
-      {
-        title: "Диплом об образовании",
-        file: null,
-      },
+      // {
+      //   title: "Диплом об образовании",
+      //   files: [
+      //     "/documents/team/bugasova/diploma/1.jpg",
+      //     "/documents/team/bugasova/diploma/2.jpg",
+      //   ],
+      // },
       {
         title: "Аттестат аудитора",
-        file: null,
+        files: [
+          "/documents/team/bugasova/certificate/Auditor Qualification Certificate (Bugasova, 2010).jpg",
+        ],
       },
       {
         title: "Повышение квалификации",
-        file: null,
+        files: [
+          "/documents/team/bugasova/professional development/Bugasov Certificate 25.07.23.jpg",
+          "/documents/team/bugasova/professional development/Bugasov Certificate 10.06.24.jpg",
+          "/documents/team/bugasova/professional development/Bugasova-1.jpg",
+          "/documents/team/bugasova/professional development/Bugasov's Certificate of Advanced Training (2023).jpg",
+          "/documents/team/bugasova/professional development/Bugasov's Certificate of Advanced Training (2025).jpg",
+        ],
       },
     ],
   },
+
   {
     name: "Наталья Валерьевна Дорожкина",
     role: "Ведущий аудитор",
     photo: "/images/team/dorozhkina3.jpg",
-    documentPhoto: "/images/team/dorozhkina1.jpg",
+    documentPhoto: "/images/team/dorozhkinaFace.jpg",
+
     text: (
       <>
         <p>
@@ -76,26 +94,95 @@ const team = [
         </p>
       </>
     ),
+
     documents: [
-      {
-        title: "Диплом об образовании",
-        file: null,
-      },
+      // {
+      //   title: "Диплом об образовании",
+      //   files: [
+      //     "/documents/team/dorozhkina/diploma/1.jpg",
+      //     "/documents/team/dorozhkina/diploma/2.jpg",
+      //   ],
+      // },
       {
         title: "Аттестат аудитора",
-        file: null,
+        files: [
+          "/documents/team/dorozhkina/certificate/Auditor Qualification Certificate (Dorozhkin, 1996).jpg",
+        ],
       },
       {
         title: "Повышение квалификации",
-        file: null,
+        files: [
+          "/documents/team/dorozhkina/professional development/Dorozhkin Certificate 10.06.24.jpg",
+          "/documents/team/dorozhkina/professional development/Dorozhkin Certificate 25.07.23.jpg",
+          "/documents/team/dorozhkina/professional development/Dorozhkina’s Certificate of Advanced Training (2023).jpg",
+          "/documents/team/dorozhkina/professional development/Dorozhkina’s Certificate of Advanced Training (2025).jpg",
+          "/documents/team/dorozhkina/professional development/Dorozhkina-2.jpg",
+        ],
       },
     ],
   },
+
+  {
+    name: "Людмила Анатольевна Мищенко",
+    role: "Ведущий аудитор",
+    photo: "/images/team/mishchenko.jpg",
+    documentPhoto: "/images/team/mishchenkoFace.jpg",
+
+    text: (
+      <>
+        <p>
+          Кандидат экономических наук. Аудитор, имеющий право осуществления
+          аудиторской деятельности в области общего аудита с опытом работы
+          более 25 лет.
+        </p>
+
+        <p>
+          Дипломированный внутренний аудитор с опытом работы во внутреннем
+          аудите крупнейшего угольного холдинга региона более 10 лет.
+        </p>
+
+        <p>
+          В прошлом доцент кафедры экономики и организации строительства
+          Кузбасского государственного технического университета им. М.Ф.
+          Горбачева, с опытом работы более 20 лет.
+        </p>
+
+        <p>
+          Автор методик и научных статей в области экономики и финансов.
+        </p>
+      </>
+    ),
+
+    documents: [
+      // {
+      //   title: "Диплом об образовании",
+      //   files: [
+      //     "/documents/team/mishchenko/diploma/1.jpg",
+      //     "/documents/team/mishchenko/diploma/2.jpg",
+      //   ],
+      // },
+      {
+        title: "Аттестат аудитора",
+        files: [
+          "/documents/team/mishchenko/certificate/Mishchenko's Certificate.jpg",
+        ],
+      },
+      {
+        title: "Повышение квалификации",
+        files: [
+          "/documents/team/mishchenko/professional development/Mishchenko Certificate 30.09.24.jpg",
+          "/documents/team/mishchenko/professional development/MISHCHENKO LYUDMILA ANATOLYEVNA_2025_0010001.jpg",
+        ],
+      },
+    ],
+  },
+
   {
     name: "Валентина Ивановна Зайцева",
     role: "Ведущий аудитор",
     photo: "/images/team/zaitseva.jpg",
-    documentPhoto: "/images/team/zaitseva2.jpg",
+    documentPhoto: "/images/team/zaitseva.jpg",
+
     text: (
       <>
         <p>
@@ -124,62 +211,27 @@ const team = [
         </p>
       </>
     ),
+
     documents: [
-      {
-        title: "Диплом об образовании",
-        file: null,
-      },
+      // {
+      //   title: "Диплом об образовании",
+      //   files: [
+      //     "/documents/team/zaitseva/diploma/1.jpg",
+      //     "/documents/team/zaitseva/diploma/2.jpg",
+      //   ],
+      // },
       {
         title: "Аттестат аудитора",
-        file: null,
+        files: [
+          "/documents/team/zaitseva/certificate/Zaitsev's Certificate.jpg",
+        ],
       },
       {
         title: "Повышение квалификации",
-        file: null,
-      },
-    ],
-  },
-  {
-    name: "Людмила Анатольевна Мищенко",
-    role: "Ведущий аудитор",
-    photo: "/images/team/mishchenko.jpg",
-    documentPhoto: "/images/team/mishchenko2.jpg",
-    text: (
-      <>
-        <p>
-          Кандидат экономических наук. Аудитор, имеющий право осуществления
-          аудиторской деятельности в области общего аудита с опытом работы
-          более 25 лет.
-        </p>
-
-        <p>
-          Дипломированный внутренний аудитор с опытом работы во внутреннем
-          аудите крупнейшего угольного холдинга региона более 10 лет.
-        </p>
-
-        <p>
-          В прошлом доцент кафедры экономики и организации строительства
-          Кузбасского государственного технического университета им. М.Ф.
-          Горбачева, с опытом работы более 20 лет.
-        </p>
-
-        <p>
-          Автор методик и научных статей в области экономики и финансов.
-        </p>
-      </>
-    ),
-    documents: [
-      {
-        title: "Диплом об образовании",
-        file: null,
-      },
-      {
-        title: "Аттестат аудитора",
-        file: null,
-      },
-      {
-        title: "Повышение квалификации",
-        file: null,
+        files: [
+          "/documents/team/zaitseva/professional development/Zaytsev Certificate 10.06.24.jpg",
+          "/documents/team/zaitseva/professional development/ZAYTSEVA VALENTINA IVANOVNA_2025_0010001.jpg",
+        ],
       },
     ],
   },
@@ -209,8 +261,13 @@ export default function TeamPage() {
           />
 
           <div className={styles.teamGrid}>
-            {team.map((person) => (
-              <article className={styles.personCard} key={person.name}>
+            {team.map((person, index) => (
+              <article
+                className={`${styles.personCard} ${
+                  index === team.length - 1 ? styles.personCardWide : ""
+                }`}
+                key={person.name}
+              >
                 <div className={styles.personAvatar}>
                   <Image
                     src={person.photo}
@@ -242,62 +299,18 @@ export default function TeamPage() {
           />
 
           <p className={styles.documentsIntro}>
-            Образование, квалификационные аттестаты и документы о повышении
+            Квалификационные аттестаты и документы о повышении
             квалификации сотрудников ООО «Эксперт-Аудит».
           </p>
 
-          <div className={styles.documentsGrid}>
-            {team.map((person) => (
-              <article
-                className={styles.documentsCard}
-                key={person.name}
-              >
-                <div className={styles.documentsHeader}>
-                  <div className={styles.documentsPerson}>
-                    <div className={styles.documentsAvatar}>
-                      <Image
-                        src={person.documentPhoto}
-                        alt={person.name}
-                        fill
-                        sizes="64px"
-                      />
-                    </div>
-
-                    <div className={styles.documentsPersonInfo}>
-                      <p className="eyebrow">{person.role}</p>
-
-                      <h2>{person.name}</h2>
-                    </div>
-                  </div>
-                </div>
-
-                <div className={styles.documentList}>
-                  {person.documents.map((document) => (
-                    <div
-                      className={styles.documentItem}
-                      key={document.title}
-                    >
-                      <div className={styles.documentInfo}>
-                        <strong>{document.title}</strong>
-
-                        {document.file ? (
-                          <a
-                            href={document.file}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            Открыть документ →
-                          </a>
-                        ) : (
-                          <small>Документ будет добавлен</small>
-                        )}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </article>
-            ))}
-          </div>
+          <DocumentsSection
+            team={team.map(({ name, role, documentPhoto, documents }) => ({
+              name,
+              role,
+              documentPhoto,
+              documents,
+            }))}
+          />
         </div>
       </section>
     </>
