@@ -95,7 +95,6 @@ app/
 
 components/
 ├── Clients/
-├── Contacts/
 ├── CookieNotice/
 ├── Disclosure/
 ├── DocumentsModal/

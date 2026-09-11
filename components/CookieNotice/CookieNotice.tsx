@@ -28,7 +28,11 @@ export function CookieNotice() {
   }
 
   return (
-    <div className={styles.cookieNotice} role="dialog" aria-label="Уведомление о cookies">
+    <div
+      className={styles.cookieNotice}
+      role="dialog"
+      aria-label="Уведомление о cookies"
+    >
       <div className={styles.content}>
         <p>
           ООО «Эксперт-Аудит» обрабатывает cookies с целью удобного

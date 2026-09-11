@@ -112,13 +112,13 @@ export default function ContactsPage() {
                   Кемерово, проспект Московский, д. 18 к. 3 кв. 108
                 </span>
 
-                <a
+                {/* <a
                   href="https://yandex.ru/maps/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   Открыть карту ↗
-                </a>
+                </a> */}
               </div>
             </div>
           </div>
