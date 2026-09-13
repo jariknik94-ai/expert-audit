@@ -180,8 +180,8 @@ const team = [
   {
     name: "Валентина Ивановна Зайцева",
     role: "Ведущий аудитор",
-    photo: "/images/team/zaitseva1.jpg",
-    documentPhoto: "/images/team/zaitsevaFace.jpg",
+    photo: "/images/team/zaitseva2.jpg",
+    documentPhoto: "/images/team/zaitsevaFace2.jpg",
 
     text: (
       <>

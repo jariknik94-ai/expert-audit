@@ -21,16 +21,21 @@
   grid-column: 1 / -1;
 
   display: grid;
-  grid-template-columns: 260px minmax(0, 1fr);
+  grid-template-columns: calc((100% - 36px) / 3 - 60px) minmax(0, 1fr);
   column-gap: 30px;
   align-items: start;
 
   .personAvatar {
     grid-row: 1 / span 3;
-
-    width: 260px;
-    height: 260px;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
     margin-bottom: 0;
+
+    img {
+      object-fit: cover;
+      object-position: center 35%;
+    }
   }
 
   .eyebrow {
@@ -188,12 +193,12 @@
 
   .personCardWide {
     grid-column: 1 / -1;
-
-    grid-template-columns: 220px minmax(0, 1fr);
+    grid-template-columns: calc((100% - 18px) / 2 - 60px) minmax(0, 1fr);
 
     .personAvatar {
-      width: 220px;
-      height: 220px;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1 / 1;
     }
   }
 }
@@ -216,6 +221,10 @@
       height: auto;
       aspect-ratio: 1 / 1;
       margin-bottom: 25px;
+
+      img {
+        object-position: center 35%;
+      }
     }
 
     .eyebrow,
