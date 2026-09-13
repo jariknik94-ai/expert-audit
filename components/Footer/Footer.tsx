@@ -36,8 +36,8 @@ export function Footer() {
           <div className={styles.contactInfo}>
             <a href="tel:+79236174055">+7 923 617 40 55</a>
 
-            <a href="mailto:exspert-audit@mail.ru">
-              exspert-audit@mail.ru
+            <a href="mailto:audit@expert-audit.ru">
+              audit@expert-audit.ru
             </a>
 
             <p>
@@ -83,7 +83,7 @@ export function Footer() {
         </a>
 
         <a
-          href="mailto:exspert-audit@mail.ru"
+          href="mailto:audit@expert-audit.ru"
           className={styles.contactButton}
           aria-label="Email"
         >

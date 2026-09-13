@@ -28,8 +28,16 @@ export const clients: Client[] = [
     name: "А энерго",
     logo: "/images/clients/A energo.png",
   },
-//   {
-//     name: "Клиент 7",
-//     logo: "/images/clients/client-7.jpg",
-//   },
+  {
+     name: "ОЭСК",
+     logo: "/images/clients/OESK.png",
+   },
+   {
+     name: "НИЦ ИГД",
+     logo: "/images/clients/NIC IGD.svg",
+   },
+   {
+     name: "Алзамир",
+     logo: "/images/clients/ALZAMIR.jpg",
+  },
 ];

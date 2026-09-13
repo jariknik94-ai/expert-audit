@@ -10,6 +10,7 @@
 
 .heroGrid {
   display: grid;
+
   grid-template-columns: 1.08fr 0.92fr;
 
   align-items: center;
@@ -23,7 +24,7 @@
   margin: 0 0 25px;
 
   font-size: clamp(46px, 6vw, 76px);
-  line-height: 0.99;
+  line-height: 1.10;
 
   letter-spacing: -0.055em;
 
@@ -81,103 +82,60 @@
   min-height: 480px;
 }
 
+/* Мягкие декоративные элементы вокруг фотографии */
 .orb {
   position: absolute;
 
   border-radius: 50%;
 
-  filter: blur(2px);
+  pointer-events: none;
+
+  filter: blur(8px);
 }
 
 .orbOne {
-  width: 350px;
-  height: 350px;
+  width: 380px;
+  height: 380px;
 
-  top: 30px;
-  right: 30px;
+  top: 5px;
+  right: 5px;
 
-  background: #d8e8ff;
+  background: rgba(120, 167, 255, 0.28);
 }
 
 .orbTwo {
-  width: 190px;
-  height: 190px;
+  width: 210px;
+  height: 210px;
 
-  left: 20px;
-  bottom: 35px;
+  left: 0;
+  bottom: 10px;
 
-  background: #b7d0fb;
+  background: rgba(47, 111, 237, 0.16);
 }
 
-.auditCard {
+/* Фотография */
+.heroImage {
   position: relative;
 
-  width: min(430px, 90%);
+  z-index: 2;
 
-  padding: 25px;
+  width: min(500px, 92%);
+  aspect-ratio: 1 / 1;
+
+  overflow: hidden;
 
   border-radius: 28px;
 
-  background: rgba(7, 20, 38, 0.95);
+  background: #dceaff;
 
-  color: #fff;
+  box-shadow:
+    0 35px 90px rgba(7, 20, 38, 0.20),
+    0 8px 25px rgba(47, 111, 237, 0.08);
 
-  box-shadow: 0 35px 90px rgba(7, 20, 38, 0.25);
+  transform: rotate(-3deg);
 
-  transform: rotate(-4deg);
-}
-
-.auditCardTop,
-.auditCardBottom {
-  display: flex;
-
-  align-items: center;
-  justify-content: space-between;
-}
-
-.auditCardTop {
-  color: #9db0cb;
-
-  font-size: 10px;
-
-  letter-spacing: 0.14em;
-
-  i {
-    color: #70a2ff;
-
-    font-style: normal;
-  }
-}
-
-.chart {
-  display: flex;
-
-  align-items: flex-end;
-
-  height: 220px;
-
-  gap: 12px;
-
-  padding: 30px 10px;
-
-  span {
-    flex: 1;
-
-    border-radius: 7px 7px 2px 2px;
-
-    background: linear-gradient(#78a7ff, #2f6fed);
-  }
-}
-
-.auditCardBottom {
-  strong {
-    font-size: 17px;
-  }
-
-  span {
-    color: #9db0cb;
-
-    font-size: 11px;
+  img {
+    object-fit: cover;
   }
 }
 
@@ -339,6 +297,27 @@
 
   gap: 30px;
 
+  :global(.eyebrow) {
+    display: inline-flex;
+    align-items: center;
+
+    margin-bottom: 18px;
+    padding: 6px 10px;
+
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 999px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    color: #fff;
+
+    font-size: 10px;
+    letter-spacing: 0.16em;
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
   h2 {
     max-width: 750px;
 
@@ -386,7 +365,11 @@
   }
 
   .heroVisual {
-    min-height: 360px;
+    min-height: 420px;
+  }
+
+  .heroImage {
+    width: min(520px, 90%);
   }
 
   .serviceGrid,
@@ -417,6 +400,36 @@
     gap: 16px;
 
     flex-wrap: wrap;
+  }
+
+  .heroVisual {
+    min-height: 330px;
+  }
+
+  .orbOne {
+    width: 280px;
+    height: 280px;
+
+    top: 15px;
+    right: 0;
+  }
+
+  .orbTwo {
+    width: 150px;
+    height: 150px;
+
+    left: 0;
+    bottom: 0;
+  }
+
+  .heroImage {
+    width: 92%;
+
+    aspect-ratio: 4 / 3;
+
+    border-radius: 22px;
+
+    transform: rotate(-2deg);
   }
 
   .serviceGrid,

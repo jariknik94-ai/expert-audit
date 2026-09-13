@@ -11,7 +11,7 @@ export function Clients() {
       <div className="container">
         <SectionTitle
           kicker="НАШИ КЛИЕНТЫ"
-          title="Работаем с компаниями разных отраслей"
+          title="Работаем с организациями разных отраслей"
         />
 
         {/* <p className={styles.sectionSubtitle}>
@@ -20,8 +20,11 @@ export function Clients() {
         </p> */}
 
         <div className={styles.clientGrid}>
-          {clients.map((client) => (
-            <div className={styles.clientItem} key={client.name}>
+          {clients.map((client, index) => (
+            <div
+              className={styles.clientItem}
+              key={`${client.logo}-${index}`}
+            >
               <div className={styles.logoWrapper}>
                 <Image
                   src={client.logo}
@@ -31,6 +34,12 @@ export function Clients() {
                   className={styles.logo}
                 />
               </div>
+
+              {client.name === "ОЭСК" && (
+                <span className={styles.clientName}>
+                  ОЭСК
+                </span>
+              )}
             </div>
           ))}
         </div>

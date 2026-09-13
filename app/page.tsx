@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { SectionTitle } from "@/components/SectionTitle/SectionTitle";
@@ -16,16 +17,16 @@ export default function HomePage() {
             <p className="eyebrow">Эксперт-Аудит · КЕМЕРОВО</p>
 
             <h1>
-              Проверяем цифры.
+              Проверяем учет.
               <br />
-              <span>Находим риски.</span>
+              <span>Выявляем риски.</span>
               <br />
               Помогаем принимать решения.
             </h1>
 
             <p className={styles.heroLead}>
-              Аудит и финансовый консалтинг для компаний, которым важны
-              прозрачность, контроль и уверенность в финансовых результатах.
+              Аудит и финансовый консалтинг для организаций, которым важны точность,
+              достоверность, прозрачность, контроль и уверенность.
             </p>
 
             <div className={styles.heroProof}>
@@ -46,30 +47,18 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className={styles.heroVisual} aria-hidden="true">
+          <div className={styles.heroVisual}>
             <div className={`${styles.orb} ${styles.orbOne}`} />
             <div className={`${styles.orb} ${styles.orbTwo}`} />
 
-            <div className={styles.auditCard}>
-              <div className={styles.auditCardTop}>
-                <span>FINANCIAL REVIEW</span>
-                <i>●</i>
-              </div>
-
-              <div className={styles.chart}>
-                <span style={{ height: "38%" }} />
-                <span style={{ height: "56%" }} />
-                <span style={{ height: "44%" }} />
-                <span style={{ height: "72%" }} />
-                <span style={{ height: "63%" }} />
-                <span style={{ height: "88%" }} />
-                <span style={{ height: "76%" }} />
-              </div>
-
-              <div className={styles.auditCardBottom}>
-                <strong>Контроль</strong>
-                <span>Риски · Учет · Налоги</span>
-              </div>
+            <div className={styles.heroImage}>
+              <Image
+                src="/images/team/dorozhkina+bugasova2.jpg"
+                alt="Эксперт-Аудит"
+                fill
+                priority
+                sizes="(max-width: 980px) 90vw, 500px"
+              />
             </div>
           </div>
         </div>
@@ -86,8 +75,7 @@ export default function HomePage() {
             <p className={styles.lead}>
               ООО «Эксперт-Аудит» оказывает аудиторские, консультационные и
               экспертные услуги. Команда сочетает практический опыт в аудите,
-              налогах, бухгалтерском учете и финансово-экономической
-              экспертизе.
+              налогах, бухгалтерском учете и финансово-экономической экспертизе.
             </p>
 
             <div className={styles.quoteCard}>
