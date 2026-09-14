@@ -1,135 +1,249 @@
 .clients {
-  overflow: hidden;
+overflow: hidden;
 }
 
 .sectionSubtitle {
-  max-width: 760px;
-
-  margin: -18px 0 0;
-
-  color: var(--muted);
-
-  font-size: 14px;
-  line-height: 1.7;
+max-width: 760px;
+margin: -18px 0 0;
+color: var(--muted);
+font-size: 14px;
+line-height: 1.7;
 }
 
 .clientGrid {
-  display: grid;
-
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-
-  margin-top: 42px;
-
-  border-top: 1px solid var(--line);
-  border-left: 1px solid var(--line);
+display: grid;
+grid-template-columns: repeat(3, minmax(0, 1fr));
+margin-top: 42px;
+border-top: 1px solid var(--line);
+border-left: 1px solid var(--line);
 }
 
 .clientItem {
-  display: flex;
-  flex-direction: column;
+position: relative;
+min-height: 170px;
+border-right: 1px solid var(--line);
+border-bottom: 1px solid var(--line);
+background: var(--paper);
+perspective: 1000px;
+cursor: pointer;
+}
 
-  align-items: center;
-  justify-content: center;
+.cardInner {
+position: relative;
+width: 100%;
+min-height: 170px;
+transform-style: preserve-3d;
+transition: transform 0.65s ease;
+}
 
-  min-height: 170px;
+.flipped .cardInner {
+transform: rotateY(180deg);
+}
 
-  padding: 24px 28px;
+.cardFront,
+.cardBack {
+position: absolute;
+inset: 0;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+padding: 20px 24px;
+backface-visibility: hidden;
+-webkit-backface-visibility: hidden;
+}
 
-  border-right: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+.cardFront {
+background: var(--paper);
+}
 
-  background: var(--paper);
-
-  transition: background 0.25s ease;
+.cardBack {
+align-items: flex-start;
+justify-content: center;
+padding: 18px 22px;
+background: var(--soft);
+transform: rotateY(180deg);
+text-align: left;
 }
 
 .logoWrapper {
-  position: relative;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  width: min(100%, 210px);
-  height: 72px;
-
-  border-radius: 10px;
-
-  background: #ffffff;
+position: relative;
+display: flex;
+align-items: center;
+justify-content: center;
+width: min(100%, 210px);
+height: 72px;
+border-radius: 10px;
+background: #ffffff;
 }
 
 .logo {
-  object-fit: contain;
+object-fit: contain;
+opacity: 0.88;
+transition:
+opacity 0.3s ease,
+transform 0.3s ease;
+}
 
-  opacity: 0.88;
-
-  transition:
-    opacity 0.3s ease,
-    transform 0.3s ease;
+.clientItem:hover .logo {
+opacity: 1;
+transform: scale(1.03);
 }
 
 .clientName {
-  display: block;
-
-  margin-top: 12px;
-
-  color: var(--ink);
-
-  font-size: 13px;
-  font-weight: 700;
-
-  line-height: 1.3;
-
-  text-align: center;
+display: block;
+margin-top: 12px;
+color: var(--ink);
+font-size: 13px;
+font-weight: 700;
+line-height: 1.3;
+text-align: center;
 }
 
-.clientItem:hover {
-  background: var(--soft);
+.cardHint {
+position: absolute;
+right: 16px;
+bottom: 12px;
+left: 16px;
+color: #98a2b3;
+font-size: 10px;
+font-weight: 600;
+line-height: 1.3;
+text-align: center;
+}
 
-  .logo {
-    opacity: 1;
+.desktopHint {
+display: inline;
+}
 
-    transform: scale(1.03);
-  }
+.mobileHint {
+display: none;
+}
 
-  .clientName {
-    color: var(--blue);
-  }
+.backLabel {
+margin: 0 0 4px;
+color: var(--blue);
+font-size: 8px;
+font-weight: 800;
+letter-spacing: 0.14em;
+line-height: 1.2;
+}
+
+.cardBack h3 {
+margin: 0 0 6px;
+color: var(--ink);
+font-size: 14px;
+font-weight: 800;
+line-height: 1.2;
+}
+
+.cardBack p {
+margin: 0;
+color: var(--muted);
+font-size: 10px;
+line-height: 1.35;
+}
+
+.backHint {
+margin-top: 7px;
+color: #98a2b3;
+font-size: 8px;
+line-height: 1.3;
 }
 
 @media (max-width: 980px) {
-  .clientGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+.clientGrid {
+grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.cardBack {
+padding: 18px 20px;
+}
+
+.cardBack h3 {
+font-size: 14px;
+}
+
+.cardBack p {
+font-size: 10px;
+}
 }
 
 @media (max-width: 640px) {
-  .sectionSubtitle {
-    margin-top: -8px;
-  }
+.sectionSubtitle {
+margin-top: -8px;
+}
 
-  .clientGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+.clientGrid {
+grid-template-columns: repeat(2, minmax(0, 1fr));
+margin-top: 30px;
+}
 
-    margin-top: 30px;
-  }
+.clientItem {
+min-height: 145px;
+padding: 0;
+}
 
-  .clientItem {
-    min-height: 145px;
+.cardInner {
+min-height: 145px;
+}
 
-    padding: 18px 14px;
-  }
+.cardFront,
+.cardBack {
+padding: 13px 11px;
+}
 
-  .logoWrapper {
-    width: min(100%, 150px);
+.logoWrapper {
+width: min(100%, 150px);
+height: 58px;
+}
 
-    height: 58px;
-  }
+.clientName {
+margin-top: 9px;
+font-size: 12px;
+}
 
-  .clientName {
-    margin-top: 9px;
+.cardHint {
+right: 8px;
+bottom: 7px;
+left: 8px;
+font-size: 8px;
+}
 
-    font-size: 12px;
-  }
+.desktopHint {
+display: none;
+}
+
+.mobileHint {
+display: inline;
+}
+
+.cardBack {
+justify-content: flex-start;
+padding-top: 15px;
+}
+
+.backLabel {
+margin-bottom: 4px;
+font-size: 7px;
+letter-spacing: 0.12em;
+line-height: 1.2;
+}
+
+.cardBack h3 {
+margin: 0 0 5px;
+font-size: 11px;
+font-weight: 800;
+line-height: 1.2;
+}
+
+.cardBack p {
+margin: 0;
+font-size: 8.5px;
+line-height: 1.3;
+}
+
+.backHint {
+display: none;
+}
 }

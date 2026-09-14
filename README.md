@@ -114,7 +114,7 @@ lib/
 public/
 ├── documents/
 ├── images/
-└── favicon.png
+└── favicon.svg
 ```
 
 ## Что необходимо проверить перед публикацией

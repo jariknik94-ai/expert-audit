@@ -60,7 +60,7 @@ export function Navbar() {
         >
           <span className={styles.brandMark}>
             <Image
-              src="/favicon.png"
+              src="/favicon.svg"
               alt="Эксперт-Аудит"
               width={42}
               height={42}

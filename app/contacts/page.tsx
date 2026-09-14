@@ -50,8 +50,8 @@ export default function ContactsPage() {
                 <div className={styles.contactItem}>
                   <span className={styles.label}>Электронная почта</span>
 
-                  <a href="mailto:audit@expert-audit.ru">
-                    audit@expert-audit.ru
+                  <a href="mailto:exspert-audit@mail.ru">
+                    exspert-audit@mail.ru
                   </a>
                 </div>
 
@@ -77,7 +77,7 @@ export default function ContactsPage() {
                 </a>
 
                 <a
-                  href="mailto:audit@expert-audit.ru"
+                  href="mailto:exspert-audit@mail.ru"
                   className="button button-ghost"
                 >
 
