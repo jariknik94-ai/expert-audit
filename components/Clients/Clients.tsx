@@ -85,9 +85,9 @@ export function Clients() {
 
                     <p>{client.description}</p>
 
-                    <span className={styles.backHint}>
+                    {/* <span className={styles.backHint}>
                       Наведите в сторону, чтобы вернуться
-                    </span>
+                    </span> */}
                   </div>
                 </div>
               </div>
