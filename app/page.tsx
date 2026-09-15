@@ -25,8 +25,8 @@ export default function HomePage() {
             </h1>
 
             <p className={styles.heroLead}>
-              Аудит и финансовый консалтинг для организаций, которым важны точность,
-              достоверность, прозрачность, контроль и уверенность.
+              Аудит и финансовый консалтинг для организаций, которым важны
+              точность, достоверность, прозрачность, контроль и уверенность.
             </p>
 
             <div className={styles.heroProof}>
@@ -85,6 +85,22 @@ export default function HomePage() {
                 Наша задача – не просто указать на проблему, а помочь понять
                 ее причины, последствия и предложить варианты решения.
               </p>
+
+              <div className={styles.quoteAuthor}>
+                <div className={styles.quoteAuthorPhoto}>
+                  <Image
+                    src="/images/team/bugasovaFace.jpg"
+                    alt="Елена Александровна Бугасова"
+                    fill
+                    sizes="48px"
+                  />
+                </div>
+
+                <div className={styles.quoteAuthorInfo}>
+                  <strong>Елена Александровна Бугасова</strong>
+                  <span>Директор ООО «Эксперт-Аудит»</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -210,10 +226,7 @@ export default function HomePage() {
             </p>
 
             <div className={styles.ctaContacts}>
-              <Link
-                href="/contacts"
-                className="button button-light"
-              >
+              <Link href="/contacts" className="button button-light">
                 Связаться
               </Link>
             </div>

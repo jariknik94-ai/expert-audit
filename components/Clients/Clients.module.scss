@@ -1,249 +1,363 @@
 .clients {
-overflow: hidden;
+  overflow: hidden;
 }
 
 .sectionSubtitle {
-max-width: 760px;
-margin: -18px 0 0;
-color: var(--muted);
-font-size: 14px;
-line-height: 1.7;
+  max-width: 760px;
+  margin: -18px 0 0;
+
+  color: var(--muted);
+
+  font-size: 14px;
+  line-height: 1.7;
 }
 
 .clientGrid {
-display: grid;
-grid-template-columns: repeat(3, minmax(0, 1fr));
-margin-top: 42px;
-border-top: 1px solid var(--line);
-border-left: 1px solid var(--line);
+  display: grid;
+
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+
+  margin-top: 42px;
+
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
 }
 
 .clientItem {
-position: relative;
-min-height: 170px;
-border-right: 1px solid var(--line);
-border-bottom: 1px solid var(--line);
-background: var(--paper);
-perspective: 1000px;
-cursor: pointer;
+  position: relative;
+
+  min-height: 195px;
+
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+
+  background: var(--paper);
+
+  perspective: 1000px;
+
+  cursor: pointer;
 }
 
 .cardInner {
-position: relative;
-width: 100%;
-min-height: 170px;
-transform-style: preserve-3d;
-transition: transform 0.65s ease;
+  position: relative;
+
+  width: 100%;
+  min-height: 195px;
+
+  transform-style: preserve-3d;
+
+  transition: transform 0.65s ease;
 }
 
 .flipped .cardInner {
-transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 
 .cardFront,
 .cardBack {
-position: absolute;
-inset: 0;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-padding: 20px 24px;
-backface-visibility: hidden;
--webkit-backface-visibility: hidden;
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 18px 14px;
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .cardFront {
-background: var(--paper);
+  background: var(--paper);
 }
 
 .cardBack {
-align-items: flex-start;
-justify-content: center;
-padding: 18px 22px;
-background: var(--soft);
-transform: rotateY(180deg);
-text-align: left;
+  align-items: flex-start;
+  justify-content: center;
+
+  padding: 16px 18px;
+
+  background: var(--soft);
+
+  transform: rotateY(180deg);
+
+  text-align: left;
 }
 
 .logoWrapper {
-position: relative;
-display: flex;
-align-items: center;
-justify-content: center;
-width: min(100%, 210px);
-height: 72px;
-border-radius: 10px;
-background: #ffffff;
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: min(100%, 190px);
+  height: 68px;
+
+  border-radius: 10px;
+
+  background: #ffffff;
 }
 
 .logo {
-object-fit: contain;
-opacity: 0.88;
-transition:
-opacity 0.3s ease,
-transform 0.3s ease;
+  object-fit: contain;
+
+  opacity: 0.88;
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
 }
 
 .clientItem:hover .logo {
-opacity: 1;
-transform: scale(1.03);
+  opacity: 1;
+  transform: scale(1.03);
 }
 
 .clientName {
-display: block;
-margin-top: 12px;
-color: var(--ink);
-font-size: 13px;
-font-weight: 700;
-line-height: 1.3;
-text-align: center;
+  display: block;
+
+  margin-top: 10px;
+
+  color: var(--ink);
+
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.25;
+
+  text-align: center;
 }
 
 .cardHint {
-position: absolute;
-right: 16px;
-bottom: 12px;
-left: 16px;
-color: #98a2b3;
-font-size: 10px;
-font-weight: 600;
-line-height: 1.3;
-text-align: center;
+  position: absolute;
+
+  right: 10px;
+  bottom: 9px;
+  left: 10px;
+
+  color: #98a2b3;
+
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 1.25;
+
+  text-align: center;
 }
 
 .desktopHint {
-display: inline;
+  display: inline;
 }
 
 .mobileHint {
-display: none;
+  display: none;
 }
 
 .backLabel {
-margin: 0 0 4px;
-color: var(--blue);
-font-size: 8px;
-font-weight: 800;
-letter-spacing: 0.14em;
-line-height: 1.2;
+  margin: 0 0 5px;
+
+  color: var(--blue);
+
+  font-size: 7px;
+  font-weight: 800;
+
+  letter-spacing: 0.14em;
+  line-height: 1.2;
 }
 
 .cardBack h3 {
-margin: 0 0 6px;
-color: var(--ink);
-font-size: 14px;
-font-weight: 800;
-line-height: 1.2;
+  width: 100%;
+
+  margin: 0 0 7px;
+
+  color: var(--ink);
+
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1.25;
+
+  overflow-wrap: anywhere;
+  word-break: normal;
 }
 
 .cardBack p {
-margin: 0;
-color: var(--muted);
-font-size: 10px;
-line-height: 1.35;
+  width: 100%;
+
+  margin: 0;
+
+  color: var(--muted);
+
+  font-size: 9px;
+  line-height: 1.4;
+
+  overflow-wrap: anywhere;
 }
 
 .backHint {
-margin-top: 7px;
-color: #98a2b3;
-font-size: 8px;
-line-height: 1.3;
+  margin-top: 8px;
+
+  color: #98a2b3;
+
+  font-size: 7px;
+  line-height: 1.3;
 }
 
 @media (max-width: 980px) {
-.clientGrid {
-grid-template-columns: repeat(2, minmax(0, 1fr));
-}
+  .clientGrid {
+    /* Планшет: 2 карточки в строке */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 
-.cardBack {
-padding: 18px 20px;
-}
+  .clientItem {
+    min-height: 170px;
+  }
 
-.cardBack h3 {
-font-size: 14px;
-}
+  .cardInner {
+    min-height: 170px;
+  }
 
-.cardBack p {
-font-size: 10px;
-}
+  .cardFront,
+  .cardBack {
+    padding: 18px 20px;
+  }
+
+  .cardBack h3 {
+    font-size: 13px;
+  }
+
+  .cardBack p {
+    font-size: 9.5px;
+    line-height: 1.35;
+  }
 }
 
 @media (max-width: 640px) {
-.sectionSubtitle {
-margin-top: -8px;
+  .sectionSubtitle {
+    margin-top: -8px;
+  }
+
+  .clientGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    margin-top: 30px;
+  }
+
+  .clientItem {
+    min-height: 155px;
+
+    padding: 0;
+  }
+
+  .cardInner {
+    min-height: 155px;
+  }
+
+  .cardFront,
+  .cardBack {
+    padding: 12px 10px;
+  }
+
+  .logoWrapper {
+    width: min(100%, 145px);
+    height: 56px;
+  }
+
+  .clientName {
+    margin-top: 8px;
+
+    font-size: 11px;
+    line-height: 1.2;
+  }
+
+  .cardHint {
+    right: 7px;
+    bottom: 6px;
+    left: 7px;
+
+    font-size: 7.5px;
+    line-height: 1.25;
+  }
+
+  .desktopHint {
+    display: none;
+  }
+
+  .mobileHint {
+    display: inline;
+  }
+
+  .cardBack {
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    padding: 12px 11px 10px;
+  }
+
+  .backLabel {
+    margin-bottom: 3px;
+
+    font-size: 6.5px;
+
+    letter-spacing: 0.1em;
+    line-height: 1.2;
+  }
+
+  .cardBack h3 {
+    width: 100%;
+
+    margin: 0 0 5px;
+
+    font-size: 9px;
+    font-weight: 800;
+    line-height: 1.18;
+
+    overflow-wrap: anywhere;
+  }
+
+  .cardBack p {
+    width: 100%;
+
+    margin: 0;
+
+    font-size: 7.5px;
+    line-height: 1.28;
+
+    overflow-wrap: anywhere;
+  }
+
+  .backHint {
+    display: none;
+  }
 }
 
-.clientGrid {
-grid-template-columns: repeat(2, minmax(0, 1fr));
-margin-top: 30px;
-}
+@media (max-width: 380px) {
+  .clientItem {
+    min-height: 150px;
+  }
 
-.clientItem {
-min-height: 145px;
-padding: 0;
-}
+  .cardInner {
+    min-height: 150px;
+  }
 
-.cardInner {
-min-height: 145px;
-}
+  .cardFront,
+  .cardBack {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
 
-.cardFront,
-.cardBack {
-padding: 13px 11px;
-}
+  .logoWrapper {
+    width: 135px;
+    height: 52px;
+  }
 
-.logoWrapper {
-width: min(100%, 150px);
-height: 58px;
-}
+  .cardBack h3 {
+    font-size: 8.5px;
+  }
 
-.clientName {
-margin-top: 9px;
-font-size: 12px;
-}
-
-.cardHint {
-right: 8px;
-bottom: 7px;
-left: 8px;
-font-size: 8px;
-}
-
-.desktopHint {
-display: none;
-}
-
-.mobileHint {
-display: inline;
-}
-
-.cardBack {
-justify-content: flex-start;
-padding-top: 15px;
-}
-
-.backLabel {
-margin-bottom: 4px;
-font-size: 7px;
-letter-spacing: 0.12em;
-line-height: 1.2;
-}
-
-.cardBack h3 {
-margin: 0 0 5px;
-font-size: 11px;
-font-weight: 800;
-line-height: 1.2;
-}
-
-.cardBack p {
-margin: 0;
-font-size: 8.5px;
-line-height: 1.3;
-}
-
-.backHint {
-display: none;
-}
+  .cardBack p {
+    font-size: 7.2px;
+    line-height: 1.25;
+  }
 }

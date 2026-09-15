@@ -31,11 +31,6 @@ export function Clients() {
           title="Организации которые нам доверяют"
         />
 
-        {/* <p className={styles.sectionSubtitle}>
-          Логотипы и наименования клиентов размещаются только при наличии
-          соответствующего разрешения.
-        </p> */}
-
         <div className={styles.clientGrid}>
           {clients.map((client, index) => {
             const isFlipped = flippedIndex === index;
@@ -62,8 +57,14 @@ export function Clients() {
                       />
                     </div>
 
+                    {/* Для клиентов с длинным юридическим названием
+                        показываем короткое название под логотипом */}
                     {client.name.includes("ОЭСК") && (
                       <span className={styles.clientName}>ОЭСК</span>
+                    )}
+
+                    {client.name.includes("Гарант") && (
+                      <span className={styles.clientName}>Гарант</span>
                     )}
 
                     <span className={styles.cardHint}>
