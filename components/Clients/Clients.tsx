@@ -12,7 +12,8 @@ export function Clients() {
   const [flippedIndex, setFlippedIndex] = useState<number | null>(null);
 
   const handleCardClick = (index: number) => {
-    setFlippedIndex((current) => (current === index ? null : index));
+
+    setFlippedIndex(index);
   };
 
   const handleCardMouseEnter = (index: number) => {
@@ -84,10 +85,6 @@ export function Clients() {
                     <h3>{client.name}</h3>
 
                     <p>{client.description}</p>
-
-                    {/* <span className={styles.backHint}>
-                      Наведите в сторону, чтобы вернуться
-                    </span> */}
                   </div>
                 </div>
               </div>

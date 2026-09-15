@@ -1,7 +1,9 @@
 import Link from "next/link";
+import { FaEnvelope, FaPhoneAlt } from "react-icons/fa";
+
+import { Map } from "@/components/Map/Map";
 
 import styles from "./page.module.scss";
-import { FaEnvelope, FaPhoneAlt } from "react-icons/fa";
 
 export const metadata = {
   title: "Контакты",
@@ -42,9 +44,7 @@ export default function ContactsPage() {
                 <div className={styles.contactItem}>
                   <span className={styles.label}>Телефон</span>
 
-                  <a href="tel:+79236174055">
-                    +7 923 617 40 55
-                  </a>
+                  <a href="tel:+79236174055">+7 923 617 40 55</a>
                 </div>
 
                 <div className={styles.contactItem}>
@@ -72,16 +72,17 @@ export default function ContactsPage() {
                 <a
                   href="tel:+79236174055"
                   className="button button-primary"
+                  aria-label="Позвонить в Эксперт-Аудит"
                 >
-                    <FaPhoneAlt />
+                  <FaPhoneAlt />
                 </a>
 
                 <a
                   href="mailto:exspert-audit@mail.ru"
                   className="button button-ghost"
+                  aria-label="Написать на электронную почту"
                 >
-
-                    <FaEnvelope />
+                  <FaEnvelope />
                 </a>
               </div>
 
@@ -94,18 +95,12 @@ export default function ContactsPage() {
               <div className={styles.mapHeader}>
                 <div>
                   <p className="eyebrow">ГДЕ МЫ НАХОДИМСЯ</p>
+
                   <h2>Офис «Эксперт-Аудит»</h2>
                 </div>
               </div>
 
-              <div className={styles.map}>
-                <iframe
-                  src="https://yandex.ru/map-widget/v1/?ll=86.150745%2C55.355733&z=17&pt=86.150745%2C55.355733%2Cpm2rdm"
-                  title="Офис «Эксперт-Аудит» на карте"
-                  loading="lazy"
-                  allowFullScreen
-                />
-              </div>
+              <Map className={styles.map} />
 
               <div className={styles.mapFooter}>
                 <span>

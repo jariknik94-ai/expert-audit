@@ -16,7 +16,7 @@ export type Service = {
 export const services: Service[] = [
 {
   slug: "mandatory-audit",
-  label: "01 · АУДИТ",
+  label: "АУДИТ",
   title: "Обязательный аудит",
 
   short:
@@ -42,7 +42,7 @@ export const services: Service[] = [
 },
 {
   slug: "initiative-audit",
-  label: "02 · АУДИТ",
+  label: "АУДИТ",
   title: "Инициативный аудит",
 
   short:
@@ -71,7 +71,7 @@ export const services: Service[] = [
 },
 {
   slug: "tax-audit",
-  label: "03 · НАЛОГИ",
+  label: "НАЛОГИ",
   title: "Налоговый аудит",
 
   short:
@@ -102,7 +102,7 @@ export const services: Service[] = [
 },
 {
   slug: "hr-audit",
-  label: "04 · HR",
+  label: "HR",
   title: "Кадровый аудит",
 
   short:
@@ -127,7 +127,7 @@ export const services: Service[] = [
 },
 {
   slug: "consulting",
-  label: "05 · КОНСАЛТИНГ",
+  label: "КОНСАЛТИНГ",
   title: "Консультации",
 
   short:
@@ -155,7 +155,7 @@ export const services: Service[] = [
 },
 {
   slug: "expertise",
-  label: "06 · ЭКСПЕРТИЗА",
+  label: "ЭКСПЕРТИЗА",
   title: "Экспертиза",
 
   short:
