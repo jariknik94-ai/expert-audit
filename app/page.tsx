@@ -54,7 +54,7 @@ export default function HomePage() {
 
             <p className={styles.heroLead}>
               Аудит и финансовый консалтинг для организаций, которым важны
-              точность, достоверность, прозрачность, контроль и уверенность.
+              точность, достоверность, прозрачность и контроль.
             </p>
 
             <div className={styles.heroProof}>
@@ -82,7 +82,7 @@ export default function HomePage() {
             <div className={styles.heroImage}>
               <Image
                 src="/images/team/dorozhkina+bugasova2.jpg"
-                alt="Команда аудиторской компании «Эксперт-Аудит» в Кемерово"
+                alt="Команда аудиторской компании «Эксперт-Аудит»"
                 fill
                 priority
                 sizes="(max-width: 980px) 90vw, 500px"
