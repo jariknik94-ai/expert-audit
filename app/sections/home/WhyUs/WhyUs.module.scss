@@ -1,0 +1,57 @@
+.whyUsSection {
+  :global(.eyebrow) {
+    display: inline-flex;
+
+    align-items: center;
+
+    margin-bottom: 18px;
+    padding: 6px 10px;
+
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 999px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    color: #fff;
+
+    font-size: 10px;
+    letter-spacing: 0.16em;
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+}
+
+.featureGrid {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 18px;
+}
+
+.feature {
+  padding: 25px;
+
+  border-top: 1px solid #33445b;
+
+  h3 {
+    font-size: 21px;
+  }
+
+  p {
+    color: #b5c0d1;
+  }
+}
+
+@media (max-width: 980px) {
+  .featureGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .featureGrid {
+    grid-template-columns: 1fr;
+  }
+}

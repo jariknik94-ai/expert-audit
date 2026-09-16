@@ -7,8 +7,6 @@
 
   --navy: #071426;
   --blue: #2f6fed;
-  --blue2: #78a7ff;
-  --accent: #cfe1ff;
 
   --radius: 22px;
   --container: 1180px;
@@ -72,7 +70,11 @@ a {
   font-weight: 700;
   font-size: 14px;
 
-  transition: 0.25s;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease;
 }
 
 .button-primary {
@@ -81,6 +83,19 @@ a {
 }
 
 .button-primary:hover {
+  transform: translateY(-2px);
+}
+
+.button-secondary {
+  border: 1px solid #cbd5e1;
+  background: transparent;
+  color: var(--ink);
+}
+
+.button-secondary:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+
   transform: translateY(-2px);
 }
 
@@ -118,7 +133,7 @@ a {
   }
 }
 
-// Общие стили для всех внутренних страниц
+// Общие стили для внутренних страниц
 .page-hero {
   padding: 100px 0 80px;
 

@@ -1,0 +1,137 @@
+.twoCol {
+  display: grid;
+
+  grid-template-columns: 1.1fr 0.9fr;
+
+  gap: 60px;
+}
+
+.lead {
+  color: #4b5a70;
+
+  font-size: 20px;
+
+  line-height: 1.55;
+}
+
+.quoteCard {
+  padding: 35px;
+
+  border: 1px solid var(--line);
+
+  border-radius: var(--radius);
+
+  background: #fff;
+
+  p {
+    font-size: 18px;
+  }
+}
+
+.quoteMark {
+  color: var(--blue);
+
+  font-size: 55px;
+
+  line-height: 0.7;
+}
+
+.quoteAuthor {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-top: 24px;
+}
+
+.quoteAuthorPhoto {
+  position: relative;
+
+  flex: 0 0 48px;
+
+  width: 48px;
+  height: 48px;
+
+  overflow: hidden;
+
+  border: 2px solid rgba(47, 111, 237, 0.12);
+
+  border-radius: 50%;
+
+  background: #dceaff;
+
+  img {
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+.quoteAuthorInfo {
+  min-width: 0;
+
+  strong {
+    display: block;
+
+    color: var(--ink);
+
+    font-size: 12px;
+    font-weight: 800;
+
+    line-height: 1.3;
+  }
+
+  span {
+    display: block;
+
+    margin-top: 2px;
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    line-height: 1.3;
+  }
+}
+
+@media (max-width: 980px) {
+  .twoCol {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .twoCol {
+    gap: 30px;
+  }
+
+  .quoteCard {
+    padding: 25px;
+  }
+
+  .quoteCard p {
+    font-size: 16px;
+
+    line-height: 1.5;
+  }
+
+  .quoteAuthor {
+    margin-top: 20px;
+  }
+
+  .quoteAuthorPhoto {
+    flex-basis: 44px;
+
+    width: 44px;
+    height: 44px;
+  }
+
+  .quoteAuthorInfo strong {
+    font-size: 11px;
+  }
+
+  .quoteAuthorInfo span {
+    font-size: 9px;
+  }
+}

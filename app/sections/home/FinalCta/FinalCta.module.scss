@@ -1,0 +1,90 @@
+.ctaSection {
+  padding: 75px 0;
+
+  background: linear-gradient(120deg, #2f6fed, #163c84);
+
+  color: #fff;
+}
+
+.ctaInner {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 30px;
+
+  :global(.eyebrow) {
+    display: inline-flex;
+    align-items: center;
+
+    margin-bottom: 18px;
+    padding: 6px 10px;
+
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 999px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    color: #fff;
+
+    font-size: 10px;
+    letter-spacing: 0.16em;
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  h2 {
+    max-width: 750px;
+
+    margin: 0 0 15px;
+
+    font-size: clamp(34px, 4vw, 54px);
+
+    line-height: 1.03;
+
+    letter-spacing: -0.04em;
+  }
+
+  p:not(:global(.eyebrow)) {
+    color: #dce8ff;
+  }
+}
+
+.ctaContacts {
+  display: flex;
+
+  align-items: center;
+
+  margin-top: 30px;
+}
+
+.ctaContacts a {
+  display: inline-flex;
+  align-items: center;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.ctaContacts a:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 10px 25px rgba(7, 20, 38, 0.18);
+}
+
+@media (max-width: 640px) {
+  .ctaInner {
+    display: grid;
+  }
+
+  .ctaContacts {
+    margin-top: 26px;
+  }
+
+  .ctaContacts a {
+    width: 100%;
+  }
+}

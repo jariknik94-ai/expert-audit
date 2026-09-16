@@ -1,0 +1,41 @@
+.processGrid {
+  display: grid;
+
+  grid-template-columns: repeat(5, 1fr);
+
+  gap: 12px;
+}
+
+.processItem {
+  padding: 20px;
+
+  border-left: 1px solid var(--line);
+
+  span {
+    color: var(--blue);
+
+    font-weight: 800;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+
+  p {
+    color: var(--muted);
+
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 980px) {
+  .processGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .processGrid {
+    grid-template-columns: 1fr;
+  }
+}
