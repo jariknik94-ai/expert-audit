@@ -5,8 +5,12 @@ import { DocumentsSection } from "@/components/DocumentsSection/DocumentsSection
 
 import styles from "./team.module.scss";
 
-export const metadata = {
-  title: "Сотрудники",
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Команда аудиторов в Кемерово",
+  description:
+    "Специалисты ООО «Эксперт-Аудит»: аудиторы, эксперты и консультанты с опытом работы в аудите, налогах, бухгалтерском учете и финансах.",
 };
 
 const team = [

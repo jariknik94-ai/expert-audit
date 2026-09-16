@@ -4,6 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+
+import { trackContactClick } from "@/lib/analytics";
+
 import styles from "./Navbar.module.scss";
 
 const navItems = [
@@ -12,7 +15,6 @@ const navItems = [
   { href: "/disclosure", label: "Раскрытие информации" },
   { href: "/contacts", label: "Контакты" },
 ];
-
 
 export function Navbar() {
   const pathname = usePathname();
@@ -48,6 +50,14 @@ export function Navbar() {
 
   const closeMenu = () => {
     setMenuOpen(false);
+  };
+
+  const handleNavClick = (href: string) => {
+    if (href === "/contacts") {
+      trackContactClick("navbar");
+    }
+
+    closeMenu();
   };
 
   return (
@@ -109,29 +119,13 @@ export function Navbar() {
                   key={item.href}
                   href={item.href}
                   className={isActive ? styles.active : ""}
-                  onClick={closeMenu}
+                  onClick={() => handleNavClick(item.href)}
                 >
                   {item.label}
                 </Link>
               );
             })}
           </div>
-
-          {/* Переключатель темы */}
-          {/* <button
-            type="button"
-            className={styles.themeButton}
-            onClick={toggleTheme}
-            aria-label={
-              darkTheme
-                ? "Переключить на светлую тему"
-                : "Переключить на тёмную тему"
-            }
-          >
-            <span aria-hidden="true">
-              {darkTheme ? "☀" : "☾"}
-            </span>
-          </button> */}
         </div>
       </div>
     </nav>

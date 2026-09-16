@@ -6,6 +6,8 @@ import {
   FaEnvelope,
 } from "react-icons/fa";
 
+import { AnalyticsLink } from "@/components/AnalyticsLink/AnalyticsLink";
+
 import styles from "./Footer.module.scss";
 
 export function Footer() {
@@ -34,11 +36,21 @@ export function Footer() {
           <h3>Контакты</h3>
 
           <div className={styles.contactInfo}>
-            <a href="tel:+79236174055">+7 923 617 40 55</a>
+            <AnalyticsLink
+              href="tel:+79236174055"
+              event="phone"
+              location="footer_contact"
+            >
+              +7 923 617 40 55
+            </AnalyticsLink>
 
-            <a href="mailto:exspert-audit@mail.ru">
+            <AnalyticsLink
+              href="mailto:exspert-audit@mail.ru"
+              event="email"
+              location="footer_contact"
+            >
               exspert-audit@mail.ru
-            </a>
+            </AnalyticsLink>
 
             <p>
               Кемерово, проспект Московский,
@@ -46,7 +58,10 @@ export function Footer() {
               д. 18 к. 3 кв. 108
             </p>
 
-            <Link href="/contacts" className={styles.allContacts}>
+            <Link
+              href="/contacts"
+              className={styles.allContacts}
+            >
               Все контакты →
             </Link>
           </div>
@@ -54,41 +69,49 @@ export function Footer() {
       </div>
 
       <div className={`container ${styles.contactLinks}`}>
-        <a
+        <AnalyticsLink
           href="https://wa.me/79236174055"
           target="_blank"
           rel="noopener noreferrer"
           className={styles.contactButton}
-          aria-label="WhatsApp"
+          ariaLabel="WhatsApp"
+          event="whatsapp"
+          location="footer"
         >
           <FaWhatsapp />
-        </a>
+        </AnalyticsLink>
 
-        <a
+        <AnalyticsLink
           href="https://t.me/Exspertaudit"
           target="_blank"
           rel="noopener noreferrer"
           className={styles.contactButton}
-          aria-label="Telegram"
+          ariaLabel="Telegram"
+          event="telegram"
+          location="footer"
         >
           <FaTelegramPlane />
-        </a>
+        </AnalyticsLink>
 
-        <a
+        <AnalyticsLink
           href="tel:+79236174055"
           className={styles.contactButton}
-          aria-label="Позвонить"
+          ariaLabel="Позвонить"
+          event="phone"
+          location="footer_social"
         >
           <FaPhoneAlt />
-        </a>
+        </AnalyticsLink>
 
-        <a
+        <AnalyticsLink
           href="mailto:exspert-audit@mail.ru"
           className={styles.contactButton}
-          aria-label="Email"
+          ariaLabel="Email"
+          event="email"
+          location="footer_social"
         >
           <FaEnvelope />
-        </a>
+        </AnalyticsLink>
       </div>
 
       <div className={`container ${styles.footerBottom}`}>

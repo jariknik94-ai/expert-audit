@@ -1,8 +1,13 @@
+import type { Metadata } from "next";
+
 import { politicsContent } from "@/lib/politics";
+
 import styles from "./privacy.module.scss";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Политика обработки персональных данных",
+  description:
+    "Политика ООО «Эксперт-Аудит» в отношении обработки и защиты персональных данных пользователей сайта.",
 };
 
 export default function PrivacyPage() {

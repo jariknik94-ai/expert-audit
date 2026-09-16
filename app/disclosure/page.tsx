@@ -1,9 +1,15 @@
+import type { Metadata } from "next";
+
+import { AnalyticsLink } from "@/components/AnalyticsLink/AnalyticsLink";
 import { Disclosure } from "@/components/Disclosure/Disclosure";
 import { disclosures } from "@/lib/disclosure";
+
 import styles from "./disclosure.module.scss";
 
-export const metadata = {
-  title: "Раскрытие информации",
+export const metadata: Metadata = {
+  title: "Раскрытие информации аудиторской организации",
+  description:
+    "Раскрытие информации ООО «Эксперт-Аудит»: сведения об аудиторской организации, деятельности, квалификации специалистов и годовой отчетности.",
 };
 
 const reports = [
@@ -58,16 +64,19 @@ export default function DisclosurePage() {
             </p>
 
             {reports.map(({ year, file }) => (
-              <a
-                className={styles.fileButton}
+              <AnalyticsLink
                 key={year}
                 href={encodeURI(file)}
                 target="_blank"
                 rel="noopener noreferrer"
+                className={styles.fileButton}
+                event="annual_report"
+                location="disclosure"
+                year={year}
               >
                 {year}
                 <span>PDF →</span>
-              </a>
+              </AnalyticsLink>
             ))}
           </aside>
         </div>

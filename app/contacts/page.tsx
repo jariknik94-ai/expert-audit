@@ -1,14 +1,16 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { FaEnvelope, FaPhoneAlt } from "react-icons/fa";
 
+import { AnalyticsLink } from "@/components/AnalyticsLink/AnalyticsLink";
 import { Map } from "@/components/Map/Map";
 
 import styles from "./page.module.scss";
 
-export const metadata = {
-  title: "Контакты",
+export const metadata: Metadata = {
+  title: "Контакты аудиторской компании в Кемерово",
   description:
-    "Контакты ООО «Эксперт-Аудит» в Кемерово. Адрес офиса, телефон, электронная почта и расположение на карте.",
+    "Контакты ООО «Эксперт-Аудит» в Кемерово: адрес офиса, телефон, электронная почта и расположение на карте.",
 };
 
 export default function ContactsPage() {
@@ -44,15 +46,25 @@ export default function ContactsPage() {
                 <div className={styles.contactItem}>
                   <span className={styles.label}>Телефон</span>
 
-                  <a href="tel:+79236174055">+7 923 617 40 55</a>
+                  <AnalyticsLink
+                    href="tel:+79236174055"
+                    event="phone"
+                    location="contacts_page"
+                  >
+                    +7 923 617 40 55
+                  </AnalyticsLink>
                 </div>
 
                 <div className={styles.contactItem}>
                   <span className={styles.label}>Электронная почта</span>
 
-                  <a href="mailto:exspert-audit@mail.ru">
+                  <AnalyticsLink
+                    href="mailto:exspert-audit@mail.ru"
+                    event="email"
+                    location="contacts_page"
+                  >
                     exspert-audit@mail.ru
-                  </a>
+                  </AnalyticsLink>
                 </div>
 
                 <div className={styles.contactItem}>
@@ -69,21 +81,25 @@ export default function ContactsPage() {
               </div>
 
               <div className={styles.actions}>
-                <a
+                <AnalyticsLink
                   href="tel:+79236174055"
                   className="button button-primary"
-                  aria-label="Позвонить в Эксперт-Аудит"
+                  ariaLabel="Позвонить в Эксперт-Аудит"
+                  event="phone"
+                  location="contacts_page_action"
                 >
                   <FaPhoneAlt />
-                </a>
+                </AnalyticsLink>
 
-                <a
+                <AnalyticsLink
                   href="mailto:exspert-audit@mail.ru"
                   className="button button-ghost"
-                  aria-label="Написать на электронную почту"
+                  ariaLabel="Написать на электронную почту"
+                  event="email"
+                  location="contacts_page_action"
                 >
                   <FaEnvelope />
-                </a>
+                </AnalyticsLink>
               </div>
 
               <Link href="/" className={styles.backLink}>
@@ -106,14 +122,6 @@ export default function ContactsPage() {
                 <span>
                   Кемерово, проспект Московский, д. 18 к. 3 кв. 108
                 </span>
-
-                {/* <a
-                  href="https://yandex.ru/maps/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Открыть карту ↗
-                </a> */}
               </div>
             </div>
           </div>

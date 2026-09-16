@@ -13,9 +13,9 @@ export function ServiceCard({
 }) {
   return (
     <article className={styles.serviceCard}>
-      <span className={styles.serviceNumber}>
+      {/* <span className={styles.serviceNumber}>
         {String(index).padStart(2, "0")}
-      </span>
+      </span> */}
 
       <p className="eyebrow">{service.label}</p>
 

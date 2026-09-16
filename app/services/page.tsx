@@ -1,7 +1,13 @@
 import { services } from "@/lib/data";
 import styles from "./services.module.scss";
 
-export const metadata = { title: "Услуги" };
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Услуги аудиторской компании в Кемерово",
+  description:
+    "Аудит, налоговый и бухгалтерский консалтинг, кадровый аудит и финансово-экономическая экспертиза для организаций в Кемерово.",
+};
 
 export default function ServicesPage() {
   return (

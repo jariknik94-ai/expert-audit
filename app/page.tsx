@@ -1,16 +1,44 @@
 import Image from "next/image";
-import Link from "next/link";
 
+import { AnalyticsLink } from "@/components/AnalyticsLink/AnalyticsLink";
+import { Clients } from "@/components/Clients/Clients";
 import { SectionTitle } from "@/components/SectionTitle/SectionTitle";
 import { ServiceCard } from "@/components/ServiceCard/ServiceCard";
-import { Clients } from "@/components/Clients/Clients";
 import { services } from "@/lib/data";
 
 import styles from "./page.module.scss";
 
 export default function HomePage() {
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "@id": "https://www.exspert-audit.ru/#organization",
+    name: "Эксперт-Аудит",
+    legalName: "ООО «Эксперт-Аудит»",
+    url: "https://www.exspert-audit.ru/",
+    description:
+      "Аудит, налоговый и бухгалтерский консалтинг, кадровый аудит и финансово-экономическая экспертиза.",
+    telephone: "+7 923 617 40 55",
+    email: "exspert-audit@mail.ru",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "проспект Московский, д. 18 к. 3, кв. 108",
+      addressLocality: "Кемерово",
+      addressRegion: "Кемеровская область — Кузбасс",
+      postalCode: "650023",
+      addressCountry: "RU",
+    },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(organizationSchema),
+        }}
+      />
+
       <section className={styles.hero}>
         <div className={`container ${styles.heroGrid}`}>
           <div>
@@ -136,28 +164,27 @@ export default function HomePage() {
           <div className={styles.featureGrid}>
             {[
               [
-                "01",
+                "independent",
                 "Независимый взгляд",
                 "Объективная оценка финансовой информации и потенциальных рисков.",
               ],
               [
-                "02",
+                "recommendations",
                 "Практические рекомендации",
                 "По итогам работы клиент получает не только выводы, но и понятные следующие шаги.",
               ],
               [
-                "03",
+                "team",
                 "Квалифицированная команда",
                 "Глубокая экспертиза и многолетний практический опыт в области налогов, учета и финансов.",
               ],
               [
-                "04",
+                "confidentiality",
                 "Конфиденциальность",
                 "Соблюдаем профессиональные требования и бережно работаем с информацией клиента.",
               ],
-            ].map(([n, t, d]) => (
-              <article className={styles.feature} key={n}>
-                <span>{n}</span>
+            ].map(([key, t, d]) => (
+              <article className={styles.feature} key={key}>
                 <h3>{t}</h3>
                 <p>{d}</p>
               </article>
@@ -226,9 +253,14 @@ export default function HomePage() {
             </p>
 
             <div className={styles.ctaContacts}>
-              <Link href="/contacts" className="button button-light">
+              <AnalyticsLink
+                href="/contacts"
+                className="button button-light"
+                event="contact"
+                location="home_cta"
+              >
                 Связаться
-              </Link>
+              </AnalyticsLink>
             </div>
           </div>
         </div>

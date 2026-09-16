@@ -16,12 +16,23 @@ export function Clients() {
     setFlippedIndex(index);
   };
 
-  const handleCardMouseEnter = (index: number) => {
-    setFlippedIndex(index);
+  const handleCardPointerEnter = (
+    index: number,
+    event: React.PointerEvent<HTMLDivElement>,
+  ) => {
+
+    if (event.pointerType === "mouse") {
+      setFlippedIndex(index);
+    }
   };
 
-  const handleCardMouseLeave = () => {
-    setFlippedIndex(null);
+  const handleCardPointerLeave = (
+    event: React.PointerEvent<HTMLDivElement>,
+  ) => {
+
+    if (event.pointerType === "mouse") {
+      setFlippedIndex(null);
+    }
   };
 
   return (
@@ -42,8 +53,10 @@ export function Clients() {
                   isFlipped ? styles.flipped : ""
                 }`}
                 key={`${client.logo}-${index}`}
-                onMouseEnter={() => handleCardMouseEnter(index)}
-                onMouseLeave={handleCardMouseLeave}
+                onPointerEnter={(event) =>
+                  handleCardPointerEnter(index, event)
+                }
+                onPointerLeave={handleCardPointerLeave}
                 onClick={() => handleCardClick(index)}
               >
                 <div className={styles.cardInner}>
