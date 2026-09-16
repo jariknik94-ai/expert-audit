@@ -54,6 +54,10 @@ export const metadata: Metadata = {
   description:
     "Аудит, налоговый и бухгалтерский консалтинг, кадровый аудит и финансово-экономическая экспертиза в Кемерово.",
 
+  verification: {
+    yandex: "6bc42f71f06f3688",
+  },
+
   alternates: {
     canonical: "/",
   },
