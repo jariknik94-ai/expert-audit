@@ -82,7 +82,7 @@ export default function HomePage() {
             <div className={styles.heroImage}>
               <Image
                 src="/images/team/dorozhkina+bugasova2.jpg"
-                alt="Эксперт-Аудит"
+                alt="Команда аудиторской компании «Эксперт-Аудит» в Кемерово"
                 fill
                 priority
                 sizes="(max-width: 980px) 90vw, 500px"

@@ -40,7 +40,7 @@ export function Clients() {
       <div className="container">
         <SectionTitle
           kicker="НАШИ КЛИЕНТЫ"
-          title="Организации которые нам доверяют"
+          title="Организации, которые нам доверяют"
         />
 
         <div className={styles.clientGrid}>
