@@ -93,6 +93,26 @@
 
 .detailsArrow {
   display: none;
+
+  width: 14px;
+  height: 14px;
+
+  margin-left: 4px;
+
+  color: currentColor;
+
+  line-height: 1;
+
+  transition: transform 0.25s ease;
+
+  svg {
+    display: block;
+
+    width: 14px;
+    height: 14px;
+
+    stroke-width: 1.5;
+  }
 }
 
 @media (max-width: 640px) {
@@ -120,6 +140,9 @@
 
     display: inline-flex;
 
+    align-items: center;
+    justify-content: flex-start;
+
     min-height: auto;
 
     margin-top: 18px;
@@ -141,10 +164,16 @@
       background: transparent;
       border-color: transparent;
     }
+
+    &:hover .detailsArrow {
+      transform: translate(2px, -2px);
+    }
   }
 
   .detailsArrow {
-    display: inline;
-    margin-left: 5px;
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
   }
 }

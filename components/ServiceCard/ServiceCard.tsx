@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FiArrowUpRight } from "react-icons/fi";
 
 import type { Service } from "@/lib/data";
 
@@ -28,7 +29,10 @@ export function ServiceCard({
         className={styles.detailsPanel}
       >
         <span className={styles.detailsText}>Подробнее</span>
-        <span className={styles.detailsArrow}>↗</span>
+
+        <span className={styles.detailsArrow} aria-hidden="true">
+          <FiArrowUpRight />
+        </span>
       </Link>
     </article>
   );

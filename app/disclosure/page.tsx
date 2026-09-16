@@ -63,21 +63,23 @@ export default function DisclosurePage() {
               отчетные периоды.
             </p>
 
-            {reports.map(({ year, file }) => (
-              <AnalyticsLink
-                key={year}
-                href={encodeURI(file)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.fileButton}
-                event="annual_report"
-                location="disclosure"
-                year={year}
-              >
-                {year}
-                <span>PDF →</span>
-              </AnalyticsLink>
-            ))}
+            {[...reports]
+              .sort((a, b) => b.year - a.year)
+              .map(({ year, file }) => (
+                <AnalyticsLink
+                  key={year}
+                  href={encodeURI(file)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.fileButton}
+                  event="annual_report"
+                  location="disclosure"
+                  year={year}
+                >
+                  {year}
+                  <span>PDF →</span>
+                </AnalyticsLink>
+              ))}
           </aside>
         </div>
       </section>
