@@ -58,10 +58,7 @@ export function Footer() {
               д. 18 к. 3 кв. 108
             </p>
 
-            <Link
-              href="/contacts"
-              className={styles.allContacts}
-            >
+            <Link href="/contacts" className={styles.allContacts}>
               Все контакты →
             </Link>
           </div>
@@ -74,11 +71,11 @@ export function Footer() {
           target="_blank"
           rel="noopener noreferrer"
           className={styles.contactButton}
-          ariaLabel="WhatsApp"
+          ariaLabel="Написать в WhatsApp"
           event="whatsapp"
           location="footer"
         >
-          <FaWhatsapp />
+          <FaWhatsapp aria-hidden="true" />
         </AnalyticsLink>
 
         <AnalyticsLink
@@ -86,31 +83,31 @@ export function Footer() {
           target="_blank"
           rel="noopener noreferrer"
           className={styles.contactButton}
-          ariaLabel="Telegram"
+          ariaLabel="Написать в Telegram"
           event="telegram"
           location="footer"
         >
-          <FaTelegramPlane />
+          <FaTelegramPlane aria-hidden="true" />
         </AnalyticsLink>
 
         <AnalyticsLink
           href="tel:+79236174055"
           className={styles.contactButton}
-          ariaLabel="Позвонить"
+          ariaLabel="Позвонить в «Эксперт-Аудит»"
           event="phone"
           location="footer_social"
         >
-          <FaPhoneAlt />
+          <FaPhoneAlt aria-hidden="true" />
         </AnalyticsLink>
 
         <AnalyticsLink
           href="mailto:exspert-audit@mail.ru"
           className={styles.contactButton}
-          ariaLabel="Email"
+          ariaLabel="Написать на электронную почту"
           event="email"
           location="footer_social"
         >
-          <FaEnvelope />
+          <FaEnvelope aria-hidden="true" />
         </AnalyticsLink>
       </div>
 

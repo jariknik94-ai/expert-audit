@@ -53,7 +53,7 @@ export function DocumentsSection({
                 <div className={styles.documentsPersonInfo}>
                   <p className="eyebrow">{person.role}</p>
 
-                  <h2>{person.name}</h2>
+                  <h3>{person.name}</h3>
                 </div>
               </div>
             </div>

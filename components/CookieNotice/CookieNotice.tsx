@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 import styles from "./CookieNotice.module.scss";
 
@@ -31,6 +31,7 @@ export function CookieNotice() {
     <div
       className={styles.cookieNotice}
       role="dialog"
+      aria-modal="true"
       aria-label="Уведомление о cookies"
     >
       <div className={styles.content}>

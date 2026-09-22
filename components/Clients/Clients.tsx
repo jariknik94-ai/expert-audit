@@ -12,24 +12,21 @@ export function Clients() {
   const [flippedIndex, setFlippedIndex] = useState<number | null>(null);
 
   const handleCardClick = (index: number) => {
-
     setFlippedIndex(index);
   };
 
   const handleCardPointerEnter = (
     index: number,
-    event: React.PointerEvent<HTMLDivElement>,
+    event: React.PointerEvent<HTMLElement>,
   ) => {
-
     if (event.pointerType === "mouse") {
       setFlippedIndex(index);
     }
   };
 
   const handleCardPointerLeave = (
-    event: React.PointerEvent<HTMLDivElement>,
+    event: React.PointerEvent<HTMLElement>,
   ) => {
-
     if (event.pointerType === "mouse") {
       setFlippedIndex(null);
     }
@@ -48,7 +45,7 @@ export function Clients() {
             const isFlipped = flippedIndex === index;
 
             return (
-              <div
+              <article
                 className={`${styles.clientItem} ${
                   isFlipped ? styles.flipped : ""
                 }`}
@@ -100,7 +97,7 @@ export function Clients() {
                     <p>{client.description}</p>
                   </div>
                 </div>
-              </div>
+              </article>
             );
           })}
         </div>

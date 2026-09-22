@@ -9,8 +9,44 @@ import styles from "./page.module.scss";
 
 export const metadata: Metadata = {
   title: "Контакты аудиторской компании в Кемерово",
+
   description:
     "Контакты ООО «Эксперт-Аудит» в Кемерово: адрес офиса, телефон, электронная почта и расположение на карте.",
+
+  alternates: {
+    canonical: "/contacts",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
+
+  openGraph: {
+    type: "website",
+    locale: "ru_RU",
+    url: "https://www.exspert-audit.ru/contacts",
+    siteName: "Эксперт-Аудит",
+    title: "Контакты аудиторской компании в Кемерово | Эксперт-Аудит",
+    description:
+      "Контакты ООО «Эксперт-Аудит» в Кемерово: адрес офиса, телефон, электронная почта и расположение на карте.",
+    images: [
+      {
+        url: "/images/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Контакты аудиторской компании «Эксперт-Аудит»",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Контакты аудиторской компании в Кемерово | Эксперт-Аудит",
+    description:
+      "Контакты ООО «Эксперт-Аудит» в Кемерово: адрес офиса, телефон, электронная почта и расположение на карте.",
+    images: ["/images/og-image.jpg"],
+  },
 };
 
 export default function ContactsPage() {

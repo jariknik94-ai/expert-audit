@@ -8,8 +8,39 @@ import styles from "./disclosure.module.scss";
 
 export const metadata: Metadata = {
   title: "Раскрытие информации аудиторской организации",
+
   description:
     "Раскрытие информации ООО «Эксперт-Аудит»: сведения об аудиторской организации, деятельности, квалификации специалистов и годовой отчетности.",
+
+  alternates: {
+    canonical: "/disclosure",
+  },
+
+  openGraph: {
+    type: "website",
+    locale: "ru_RU",
+    url: "https://www.exspert-audit.ru/disclosure",
+    siteName: "Эксперт-Аудит",
+    title: "Раскрытие информации | Эксперт-Аудит",
+    description:
+      "Раскрытие информации ООО «Эксперт-Аудит»: сведения об аудиторской организации, деятельности, квалификации специалистов и годовой отчетности.",
+    images: [
+      {
+        url: "/images/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Раскрытие информации — Эксперт-Аудит",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Раскрытие информации | Эксперт-Аудит",
+    description:
+      "Раскрытие информации ООО «Эксперт-Аудит»: сведения об аудиторской организации, деятельности, квалификации специалистов и годовой отчетности.",
+    images: ["/images/og-image.jpg"],
+  },
 };
 
 const reports = [

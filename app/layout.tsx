@@ -5,10 +5,10 @@ import { Suspense } from "react";
 // @ts-ignore
 import "./globals.scss";
 
-import { Header } from "@/components/Header/Header";
-import { Footer } from "@/components/Footer/Footer";
 import { CookieNotice } from "@/components/CookieNotice/CookieNotice";
+import { Footer } from "@/components/Footer/Footer";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics/GoogleAnalytics";
+import { Header } from "@/components/Header/Header";
 import { YandexMetrika } from "@/components/YandexMetrika/YandexMetrika";
 
 const manrope = localFont({
@@ -47,12 +47,12 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.exspert-audit.ru"),
 
   title: {
-    default: "Эксперт-Аудит — аудит и консалтинг",
+    default: "Эксперт-Аудит — аудит и финансовый консалтинг",
     template: "%s | Эксперт-Аудит",
   },
 
   description:
-    "Аудит, налоговый и бухгалтерский консалтинг, кадровый аудит и финансово-экономическая экспертиза.",
+    "Аудиторская компания «Эксперт-Аудит». Аудит, налоговый и бухгалтерский консалтинг, кадровый аудит и финансово-экономическая экспертиза для бизнеса.",
 
   verification: {
     yandex: "6bc42f71f06f3688",
@@ -72,9 +72,9 @@ export const metadata: Metadata = {
     locale: "ru_RU",
     url: "https://www.exspert-audit.ru/",
     siteName: "Эксперт-Аудит",
-    title: "Эксперт-Аудит — аудит и консалтинг",
+    title: "Эксперт-Аудит — аудит и финансовый консалтинг",
     description:
-      "Аудит, налоговый и бухгалтерский консалтинг, кадровый аудит и финансово-экономическая экспертиза.",
+      "Аудиторская компания «Эксперт-Аудит». Аудит, налоговый и бухгалтерский консалтинг, кадровый аудит и финансово-экономическая экспертиза для бизнеса.",
     images: [
       {
         url: "/images/og-image.jpg",
@@ -87,22 +87,45 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Эксперт-Аудит — аудит и консалтинг",
+    title: "Эксперт-Аудит — аудит и финансовый консалтинг",
     description:
-      "Аудит, налоговый и бухгалтерский консалтинг, кадровый аудит и финансово-экономическая экспертиза.",
+      "Аудиторская компания «Эксперт-Аудит». Аудит, налоговый и бухгалтерский консалтинг, кадровый аудит и финансово-экономическая экспертиза для бизнеса.",
     images: ["/images/og-image.jpg"],
   },
 
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
-    apple: "/favicon.svg",
+    icon: [
+      {
+        url: "/favicon.ico",
+        type: "image/x-icon",
+        sizes: "32x32",
+      },
+      // {
+      //   url: "/icons/favicon.svg",
+      //   type: "image/svg+xml",
+      // },
+      // {
+      //   url: "/icons/favicon-32.png",
+      //   type: "image/png",
+      //   sizes: "32x32",
+      // },
+    ],
+
+    apple: [
+      {
+        url: "/icons/apple-touch-icon.png",
+        sizes: "180x180",
+        type: "image/png",
+      },
+    ],
   },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html lang="ru">
       <body className={manrope.variable}>

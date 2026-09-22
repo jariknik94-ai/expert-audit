@@ -1,12 +1,44 @@
-import { services } from "@/lib/data";
-import styles from "./services.module.scss";
-
 import type { Metadata } from "next";
+
+import { services } from "@/lib/data";
+
+import styles from "./services.module.scss";
 
 export const metadata: Metadata = {
   title: "Услуги аудиторской компании",
+
   description:
-    "Аудит, налоговый и бухгалтерский консалтинг, кадровый аудит и финансово-экономическая экспертиза для организаций.",
+    "Аудит, налоговый и бухгалтерский консалтинг, кадровый аудит и финансово-экономическая экспертиза для организаций и бизнеса.",
+
+  alternates: {
+    canonical: "/services",
+  },
+
+  openGraph: {
+    type: "website",
+    locale: "ru_RU",
+    url: "https://www.exspert-audit.ru/services",
+    siteName: "Эксперт-Аудит",
+    title: "Услуги аудиторской компании | Эксперт-Аудит",
+    description:
+      "Аудит, налоговый и бухгалтерский консалтинг, кадровый аудит и финансово-экономическая экспертиза для организаций и бизнеса.",
+    images: [
+      {
+        url: "/images/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Услуги аудиторской компании «Эксперт-Аудит»",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Услуги аудиторской компании | Эксперт-Аудит",
+    description:
+      "Аудит, налоговый и бухгалтерский консалтинг, кадровый аудит и финансово-экономическая экспертиза для организаций и бизнеса.",
+    images: ["/images/og-image.jpg"],
+  },
 };
 
 export default function ServicesPage() {
@@ -43,31 +75,33 @@ export default function ServicesPage() {
                 <h2>{s.title}</h2>
 
                 <p className="lead">{s.description}</p>
-                  {s.expertise ? (
-                    <div>
-                      {s.expertise.map((section) => (
-                        <div key={section.title}>
-                          <h3>{section.title}</h3>
 
-                          <ul>
-                            {section.items.map((item) => (
-                              <li key={item}>{item}</li>
-                            ))}
-                          </ul>
-                        </div>
+                {s.expertise ? (
+                  <div>
+                    {s.expertise.map((section) => (
+                      <div key={section.title}>
+                        <h3>{section.title}</h3>
+
+                        <ul>
+                          {section.items.map((item) => (
+                            <li key={item}>{item}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <>
+                    <h3>Что входит</h3>
+
+                    <ul>
+                      {s.items?.map((item) => (
+                        <li key={item}>{item}</li>
                       ))}
-                    </div>
-                  ) : (
-                    <>
-                      <h3>Что входит</h3>
+                    </ul>
+                  </>
+                )}
 
-                      <ul>
-                        {s.items?.map((item) => (
-                          <li key={item}>{item}</li>
-                        ))}
-                      </ul>
-                    </>
-                  )}
                 <div className={styles.resultBox}>
                   <strong>Результат</strong>
                   <p>{s.result}</p>

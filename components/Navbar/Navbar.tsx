@@ -61,19 +61,23 @@ export function Navbar() {
   };
 
   return (
-    <nav className={styles.navbar}>
+    <nav
+      className={styles.navbar}
+      aria-label="Основная навигация"
+    >
       <div className={`container ${styles.navbarInner}`}>
         <Link
           href="/"
           className={styles.brand}
           onClick={closeMenu}
+          aria-label="Эксперт-Аудит — главная страница"
         >
           <span className={styles.brandMark}>
             <Image
-              src="/favicon.svg"
+              src="/icons/favicon.svg"
               alt="Эксперт-Аудит"
-              width={42}
-              height={42}
+              width={72}
+              height={44}
               priority
             />
           </span>
@@ -97,6 +101,7 @@ export function Navbar() {
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label={menuOpen ? "Закрыть меню" : "Открыть меню"}
           aria-expanded={menuOpen}
+          aria-controls="main-navigation"
         >
           <span />
           <span />
@@ -104,6 +109,7 @@ export function Navbar() {
         </button>
 
         <div
+          id="main-navigation"
           className={`${styles.navContent} ${
             menuOpen ? styles.navContentOpen : ""
           }`}
@@ -120,6 +126,7 @@ export function Navbar() {
                   href={item.href}
                   className={isActive ? styles.active : ""}
                   onClick={() => handleNavClick(item.href)}
+                  aria-current={isActive ? "page" : undefined}
                 >
                   {item.label}
                 </Link>

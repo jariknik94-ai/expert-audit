@@ -15,7 +15,7 @@ export function Disclosure({
     <details className={styles.disclosure}>
       <summary>
         <strong>{title}</strong>
-        <i>+</i>
+        <i aria-hidden="true">+</i>
       </summary>
 
       <div className={styles.content}>

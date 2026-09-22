@@ -16,11 +16,11 @@ export function Hero() {
             <br />
             <span>Выявляем риски.</span>
             <br />
-            Помогаем принимать решения.
+            Предоставляем рекомендации.
           </h1>
 
           <p className={styles.heroLead}>
-            Аудит, налоговый и бухгалтерский консалтинг, кадровый аудит и
+            Аудит, налоговый и бухгалтерский консалтинг и
             финансово-экономическая экспертиза для бизнеса.
           </p>
 
@@ -33,21 +33,7 @@ export function Hero() {
             >
               Обсудить задачу
             </AnalyticsLink>
-
-            <AnalyticsLink
-              href="tel:+79236174055"
-              className="button button-secondary"
-              event="phone"
-              location="home_hero"
-              ariaLabel="Позвонить в Эксперт-Аудит"
-            >
-              +7 923 617 40 55
-            </AnalyticsLink>
           </div>
-
-          <p className={styles.heroTrust}>
-            Конфиденциально · Без обязательств · Кемерово
-          </p>
 
           <div className={styles.heroProof}>
             <div>

@@ -14,13 +14,34 @@ export default function HomePage() {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "@id": "https://www.exspert-audit.ru/#organization",
+
     name: "Эксперт-Аудит",
     legalName: "ООО «Эксперт-Аудит»",
+
     url: "https://www.exspert-audit.ru/",
+
+    logo: "https://www.exspert-audit.ru/favicon.svg",
+    image: "https://www.exspert-audit.ru/images/og-image.jpg",
+
     description:
-      "Аудит, налоговый и бухгалтерский консалтинг, кадровый аудит и финансово-экономическая экспертиза.",
+      "Аудиторская компания «Эксперт-Аудит». Аудит, налоговый и бухгалтерский консалтинг, кадровый аудит и финансово-экономическая экспертиза для бизнеса.",
+
+    serviceType: [
+      "Аудит",
+      "Налоговый консалтинг",
+      "Бухгалтерский консалтинг",
+      "Кадровый аудит",
+      "Финансово-экономическая экспертиза",
+    ],
+
+    areaServed: {
+      "@type": "Country",
+      name: "Россия",
+    },
+
     telephone: "+7 923 617 40 55",
     email: "exspert-audit@mail.ru",
+
     address: {
       "@type": "PostalAddress",
       streetAddress: "проспект Московский, д. 18 к. 3, кв. 108",

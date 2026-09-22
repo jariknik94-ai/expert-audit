@@ -14,6 +14,7 @@ export function ServiceCard({
 }) {
   return (
     <article className={styles.serviceCard}>
+      {/* Номер услуги сейчас скрыт, но оставлен для возможного использования в будущем. */}
       {/* <span className={styles.serviceNumber}>
         {String(index).padStart(2, "0")}
       </span> */}
@@ -27,6 +28,7 @@ export function ServiceCard({
       <Link
         href={`/services#${service.slug}`}
         className={styles.detailsPanel}
+        aria-label={`Подробнее: ${service.title}`}
       >
         <span className={styles.detailsText}>Подробнее</span>
 
