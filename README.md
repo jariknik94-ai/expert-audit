@@ -1,6 +1,6 @@
 # 🏢 Эксперт-Аудит — корпоративный сайт
 
-Корпоративный сайт ООО «Эксперт-Аудит» — аудиторской компании из Кемерово.
+Корпоративный сайт ООО «Эксперт-Аудит» — аудиторской компании, оказывающей услуги в области аудита, налогового и бухгалтерского консалтинга, кадрового аудита и финансово-экономической экспертизы.
 
 Проект разработан на **Next.js, React, TypeScript и SCSS Modules**.
 
@@ -12,10 +12,10 @@
 
 | Технология             | Назначение              |
 | ---------------------- | ----------------------- |
-| **Next.js 15.5**       | Фреймворк приложения    |
-| **React 19**           | Компонентный UI         |
+| **Next.js 15.5.24**    | Фреймворк приложения    |
+| **React 19.1.1**       | Компонентный UI         |
 | **TypeScript 5.9**     | Типизация               |
-| **SCSS Modules**       | Стилизация              |
+| **SCSS Modules**       | Стилизация компонентов  |
 | **Next.js App Router** | Маршрутизация           |
 | **next/image**         | Оптимизация изображений |
 | **next/font/local**    | Локальные шрифты        |
@@ -32,7 +32,7 @@
 * 🧩 компонентная архитектура;
 * 💼 страницы услуг;
 * 👥 презентация сотрудников и команды;
-* 🏢 интерактивные карточки клиентов с 3D-переворотом;
+* 🏢 интерактивные карточки клиентов;
 * 📄 документы и годовая отчетность;
 * 📞 контактные каналы;
 * 🍪 Cookie Notice;
@@ -41,7 +41,8 @@
 * 🎯 отслеживание ключевых пользовательских действий;
 * 🤖 `robots.txt` и `sitemap.xml`;
 * ❌ кастомная страница 404;
-* 🔀 подготовленные 301-редиректы.
+* 🔀 301-редиректы;
+* 📱 favicon и иконки для разных платформ.
 
 ---
 
@@ -68,7 +69,7 @@
 
 ## 🏠 Главная страница
 
-Главная собрана из независимых секций:
+Главная страница состоит из независимых секций:
 
 ```text
 Hero
@@ -82,47 +83,48 @@ Clients
 FinalCta
 ```
 
-Компоненты секций находятся в:
+Секции находятся в:
 
 ```text
 app/sections/home/
 ```
 
-Структура выстроена вокруг пользовательского сценария: знакомство с компанией → задача клиента → экспертиза → услуги → преимущества → процесс работы → клиенты → обращение.
-
 ---
 
 ## 🔎 SEO и аналитика
-
-### SEO
 
 Используются:
 
 * Next.js Metadata API;
 * уникальные `title` и `description`;
-* `metadataBase`;
 * canonical URL;
 * Open Graph;
 * Twitter Card;
-* favicon;
-* robots metadata;
-* Schema.org JSON-LD типа `ProfessionalService`.
+* Schema.org JSON-LD;
+* `robots.txt`;
+* `sitemap.xml`.
 
 SEO-файлы:
 
 ```text
+app/layout.tsx
 app/robots.ts
 app/sitemap.ts
 ```
 
-### Аналитика
-
 Подключены:
 
-* **Google Analytics 4**;
-* **Яндекс.Метрика**.
+* Google Analytics 4;
+* Яндекс.Метрика.
 
-Отслеживаются основные действия:
+Аналитическая логика:
+
+```text
+components/AnalyticsLink/
+lib/analytics.ts
+```
+
+Основные отслеживаемые действия:
 
 ```text
 click_phone
@@ -132,43 +134,6 @@ click_whatsapp
 click_contact
 download_annual_report
 generate_lead
-```
-
-Аналитическая логика:
-
-```text
-components/AnalyticsLink/
-lib/analytics.ts
-```
-
-GA4 использует ручную отправку `page_view` для клиентской навигации Next.js.
-
----
-
-## 🔀 301-редиректы
-
-Для сохранения старых URL предусмотрены:
-
-| Старый URL        | Новый URL     |
-| ----------------- | ------------- |
-| `/aboutemployees` | `/team`       |
-| `/about_us`       | `/disclosure` |
-| `/privacypolitic` | `/privacy`    |
-
-На production редиректы будут выполняться через Nginx.
-
-```nginx
-location = /aboutemployees {
-    return 301 /team;
-}
-
-location = /about_us {
-    return 301 /disclosure;
-}
-
-location = /privacypolitic {
-    return 301 /privacy;
-}
 ```
 
 ---
@@ -184,17 +149,10 @@ app/
 ├── team/
 ├── sections/
 │   └── home/
-│       ├── Hero/
-│       ├── ClientTasks/
-│       ├── Trust/
-│       ├── About/
-│       ├── HomeServices/
-│       ├── WhyUs/
-│       ├── Process/
-│       └── FinalCta/
 ├── fonts/
 ├── globals.scss
 ├── layout.tsx
+├── manifest.ts
 ├── not-found.tsx
 ├── page.tsx
 ├── robots.ts
@@ -224,37 +182,28 @@ lib/
 
 public/
 ├── documents/
-├── images/
-└── favicon.svg
+├── icons/
+└── images/
 ```
 
 ---
 
-## 📦 Данные и ресурсы
+## 🖼️ Иконки
 
-Документы:
-
-```text
-public/documents/
-```
-
-Изображения:
+Иконки проекта находятся в:
 
 ```text
-public/images/
+public/
+├── favicon.ico
+└── icons/
+    ├── favicon.svg
+    ├── favicon-32.png
+    ├── apple-touch-icon.png
+    ├── icon-192.png
+    └── icon-512.png
 ```
 
-Данные проекта:
-
-```text
-lib/
-```
-
-Стили отдельных компонентов изолированы через SCSS Modules, общие стили находятся в:
-
-```text
-app/globals.scss
-```
+`app/manifest.ts` используется для Web App Manifest и platform icons.
 
 ---
 
@@ -296,6 +245,8 @@ http://localhost:3000
 
 Проект предназначен для размещения на **VPS REG.RU**.
 
+Архитектура production:
+
 ```text
 Internet
    ↓
@@ -303,31 +254,14 @@ Nginx
    ├── HTTPS
    ├── 301 redirects
    └── reverse proxy
-           ↓
-       Next.js
-           ↓
-       npm start
+          ↓
+      Next.js
+          ↓
+      npm start
 ```
 
 Nginx используется как reverse proxy и отвечает за HTTPS и перенаправления.
 
----
-
-## 📌 Дальнейшее развитие
-
-Планируемые направления:
-
-* реальные кейсы;
-* подтвержденные отзывы клиентов;
-* FAQ;
-* отдельные SEO-страницы услуг;
-* локальное SEO по Кемерово;
-* контентное развитие;
-* дальнейшая оптимизация конверсии.
-
-Фактические кейсы и отзывы добавляются только на основании реальных данных компании.
-
----
 
 ## 📌 Проект
 
