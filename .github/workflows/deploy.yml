@@ -37,10 +37,10 @@ jobs:
             npm run build
 
             echo "🔄 Restarting Next.js..."
-            sudo -n /usr/bin/systemctl restart expert-audit
+            sudo /usr/bin/systemctl restart expert-audit
 
             echo "🔎 Checking service status..."
-            sudo -n /usr/bin/systemctl is-active --quiet expert-audit
+            sudo /usr/bin/systemctl is-active --quiet expert-audit
 
             echo ""
             echo "🚀 Deployment finished successfully"
