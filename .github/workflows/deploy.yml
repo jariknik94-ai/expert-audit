@@ -17,6 +17,9 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
 
+          request_pty: false
+          script_stop: true
+
           script: |
             set -e
 
@@ -34,10 +37,10 @@ jobs:
             npm run build
 
             echo "🔄 Restarting Next.js..."
-            sudo systemctl restart expert-audit
+            sudo -n systemctl restart expert-audit
 
             echo "🔎 Checking service status..."
-            sudo systemctl is-active --quiet expert-audit
+            sudo -n systemctl is-active --quiet expert-audit
 
             echo ""
             echo "🚀 Deployment finished successfully"
