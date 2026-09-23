@@ -9,6 +9,8 @@ import { Process } from "./sections/home/Process/Process";
 import { Trust } from "./sections/home/Trust/Trust";
 import { WhyUs } from "./sections/home/WhyUs/WhyUs";
 
+export const dynamic = "force-dynamic";
+
 export default function HomePage() {
   const organizationSchema = {
     "@context": "https://schema.org",
