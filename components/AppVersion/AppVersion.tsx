@@ -2,24 +2,21 @@
 
 import { useCallback, useEffect } from "react";
 
-const CURRENT_VERSION =
-  process.env.NEXT_PUBLIC_BUILD_VERSION ?? "development";
-
+const STORAGE_KEY = "expert-audit-build-version";
 const VERSION_CHECK_INTERVAL = 5 * 60 * 1000;
 
 export function AppVersion() {
   const checkVersion = useCallback(async () => {
-    if (CURRENT_VERSION === "development") {
-      return;
-    }
-
     try {
-      const response = await fetch("/api/version", {
-        cache: "no-store",
-        headers: {
-          "Cache-Control": "no-cache",
+      const response = await fetch(
+        `/api/version?t=${Date.now()}`,
+        {
+          cache: "no-store",
+          headers: {
+            "Cache-Control": "no-cache",
+          },
         },
-      });
+      );
 
       if (!response.ok) {
         return;
@@ -27,43 +24,60 @@ export function AppVersion() {
 
       const data: { version?: string } = await response.json();
 
-      if (!data.version || data.version === CURRENT_VERSION) {
+      if (!data.version) {
+        return;
+      }
+
+      const knownVersion = sessionStorage.getItem(STORAGE_KEY);
+
+      /*
+       * Первый запуск после установки механизма проверки.
+       * Запоминаем текущую версию и не перезагружаем страницу.
+       */
+      if (!knownVersion) {
+        sessionStorage.setItem(STORAGE_KEY, data.version);
         return;
       }
 
       /*
-       * Не допускаем бесконечную перезагрузку,
-       * если внешний кэш временно возвращает неожиданную версию.
+       * Сервер сообщает, что опубликована новая сборка.
        */
-      const reloadVersion = sessionStorage.getItem(
-        "expert-audit-reload-version",
-      );
-
-      if (reloadVersion === data.version) {
+      if (knownVersion === data.version) {
         return;
       }
 
-      sessionStorage.setItem(
-        "expert-audit-reload-version",
-        data.version,
-      );
+      /*
+       * Сохраняем новую версию до перезагрузки,
+       * чтобы не получить бесконечный цикл reload.
+       */
+      sessionStorage.setItem(STORAGE_KEY, data.version);
 
       window.location.reload();
     } catch {
       /*
-       * Проверка версии не должна ломать работу сайта,
-       * если endpoint временно недоступен.
+       * Проверка версии не должна влиять
+       * на работу сайта при временной ошибке сети.
        */
     }
   }, []);
 
   useEffect(() => {
+    /*
+     * Проверяем версию сразу после загрузки страницы.
+     */
     void checkVersion();
 
+    /*
+     * Периодическая проверка открытой вкладки.
+     */
     const interval = window.setInterval(() => {
       void checkVersion();
     }, VERSION_CHECK_INTERVAL);
 
+    /*
+     * Если пользователь вернулся на вкладку,
+     * сразу проверяем наличие новой версии.
+     */
     const handleVisibilityChange = () => {
       if (document.visibilityState === "visible") {
         void checkVersion();

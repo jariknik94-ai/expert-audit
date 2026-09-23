@@ -1,11 +1,29 @@
+import { readFile } from "node:fs/promises";
+import path from "node:path";
 import { NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
 
-export function GET() {
+export async function GET() {
+  let version = "development";
+
+  try {
+    version = (
+      await readFile(
+        path.join(process.cwd(), ".next", "BUILD_ID"),
+        "utf8",
+      )
+    ).trim() || version;
+  } catch {
+    /*
+     * Если BUILD_ID временно недоступен,
+     * не ломаем работу сайта.
+     */
+  }
+
   return NextResponse.json(
     {
-      version: process.env.BUILD_VERSION ?? "development",
+      version,
     },
     {
       headers: {
