@@ -40,7 +40,7 @@ jobs:
             sudo /usr/bin/systemctl restart expert-audit
 
             echo "🔎 Checking service status..."
-            sudo /usr/bin/systemctl is-active --quiet expert-audit
+            systemctl is-active --quiet expert-audit
 
             echo ""
             echo "🚀 Deployment finished successfully"
