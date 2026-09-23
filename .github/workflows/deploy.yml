@@ -33,6 +33,12 @@ jobs:
             echo "📦 Installing dependencies..."
             npm ci --prefer-offline --no-audit
 
+            echo "🏷 Preparing build version..."
+            export BUILD_VERSION="$(git rev-parse --short HEAD)"
+            export NEXT_PUBLIC_BUILD_VERSION="$BUILD_VERSION"
+
+            echo "🔖 Build version: $BUILD_VERSION"
+
             echo "🏗 Building Next.js project..."
             npm run build
 

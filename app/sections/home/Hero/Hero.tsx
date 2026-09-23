@@ -9,7 +9,7 @@ export function Hero() {
     <section className={styles.hero}>
       <div className={`container ${styles.heroGrid}`}>
         <div>
-          <p className="eyebrow">Эксперт-Аудит · КЕМЕРОВО</p>
+          {/* <p className="eyebrow">Эксперт-Аудит · КЕМЕРОВО</p> */}
 
           <h1>
             Проверяем учет.

@@ -5,6 +5,7 @@ import { Suspense } from "react";
 // @ts-ignore
 import "./globals.scss";
 
+import { AppVersion } from "@/components/AppVersion/AppVersion";
 import { CookieNotice } from "@/components/CookieNotice/CookieNotice";
 import { Footer } from "@/components/Footer/Footer";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics/GoogleAnalytics";
@@ -139,7 +140,7 @@ export default function RootLayout({
         <main>{children}</main>
 
         <CookieNotice />
-
+        <AppVersion />
         <Footer />
       </body>
     </html>
