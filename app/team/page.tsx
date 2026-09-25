@@ -78,7 +78,7 @@ const team = [
       {
         title: "Аттестат аудитора",
         files: [
-          "/documents/team/bugasova/certificate/Auditor Qualification Certificate Bugasova, 2010.jpg",
+          "/documents/team/bugasova/certificate/Auditor Qualification Certificate Bugasova 2010.jpg",
         ],
       },
       {
@@ -136,7 +136,7 @@ const team = [
       {
         title: "Аттестат аудитора",
         files: [
-          "/documents/team/dorozhkina/certificate/Auditor Qualification Certificate Dorozhkin, 1996.jpg",
+          "/documents/team/dorozhkina/certificate/Auditor Qualification Certificate Dorozhkin 1996.jpg",
         ],
       },
       {
