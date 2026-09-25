@@ -78,7 +78,7 @@ const team = [
       {
         title: "Аттестат аудитора",
         files: [
-          "/documents/team/bugasova/certificate/Auditor Qualification Certificate (Bugasova, 2010).jpg",
+          "/documents/team/bugasova/certificate/Auditor Qualification Certificate Bugasova, 2010.jpg",
         ],
       },
       {
@@ -87,8 +87,8 @@ const team = [
           "/documents/team/bugasova/professional development/Bugasov Certificate 25.07.23.jpg",
           "/documents/team/bugasova/professional development/Bugasov Certificate 10.06.24.jpg",
           "/documents/team/bugasova/professional development/Bugasova-1.jpg",
-          "/documents/team/bugasova/professional development/Bugasov's Certificate of Advanced Training (2023).jpg",
-          "/documents/team/bugasova/professional development/Bugasov's Certificate of Advanced Training (2025).jpg",
+          "/documents/team/bugasova/professional development/Bugasova Certificate of Advanced Training 2023.jpg",
+          "/documents/team/bugasova/professional development/Bugasova Certificate of Advanced Training 2025.jpg",
         ],
       },
     ],
@@ -136,7 +136,7 @@ const team = [
       {
         title: "Аттестат аудитора",
         files: [
-          "/documents/team/dorozhkina/certificate/Auditor Qualification Certificate (Dorozhkin, 1996).jpg",
+          "/documents/team/dorozhkina/certificate/Auditor Qualification Certificate Dorozhkin, 1996.jpg",
         ],
       },
       {
@@ -144,8 +144,8 @@ const team = [
         files: [
           "/documents/team/dorozhkina/professional development/Dorozhkin Certificate 10.06.24.jpg",
           "/documents/team/dorozhkina/professional development/Dorozhkin Certificate 25.07.23.jpg",
-          "/documents/team/dorozhkina/professional development/Dorozhkina’s Certificate of Advanced Training (2023).jpg",
-          "/documents/team/dorozhkina/professional development/Dorozhkina’s Certificate of Advanced Training (2025).jpg",
+          "/documents/team/dorozhkina/professional development/Dorozhkina Certificate of Advanced Training 2023.jpg",
+          "/documents/team/dorozhkina/professional development/Dorozhkina Certificate of Advanced Training 2025.jpg",
           "/documents/team/dorozhkina/professional development/Dorozhkina-2.jpg",
         ],
       },
@@ -194,7 +194,7 @@ const team = [
       {
         title: "Аттестат аудитора",
         files: [
-          "/documents/team/mishchenko/certificate/Mishchenko's Certificate.jpg",
+          "/documents/team/mishchenko/certificate/Mishchenko Certificate.jpg",
         ],
       },
       {
@@ -253,7 +253,7 @@ const team = [
       {
         title: "Аттестат аудитора",
         files: [
-          "/documents/team/zaitseva/certificate/Zaitsev's Certificate.jpg",
+          "/documents/team/zaitseva/certificate/Zaitseva Certificate.jpg",
         ],
       },
       {
