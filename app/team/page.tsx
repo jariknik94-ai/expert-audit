@@ -136,7 +136,7 @@ const team = [
       {
         title: "Аттестат аудитора",
         files: [
-          "/documents/team/dorozhkina/certificate/Auditor Qualification Certificate Dorozhkin 1996.jpg",
+          "/documents/team/dorozhkina/certificate/Auditor Qualification Certificate Dorozhkina 1996.jpg",
         ],
       },
       {
