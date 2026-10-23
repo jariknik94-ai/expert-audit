@@ -4,40 +4,39 @@ import { services } from "@/lib/data";
 
 import styles from "./services.module.scss";
 
+const PAGE_TITLE = "Услуги аудиторской компании";
+const SOCIAL_TITLE = `${PAGE_TITLE} | Эксперт-Аудит`;
+const PAGE_DESCRIPTION =
+  "Аудит, налоговый и бухгалтерский консалтинг, кадровый аудит и финансово-экономическая экспертиза для организаций и бизнеса.";
+const OG_IMAGE = "/images/og-image.jpg";
+
 export const metadata: Metadata = {
-  title: "Услуги аудиторской компании",
-
-  description:
-    "Аудит, налоговый и бухгалтерский консалтинг, кадровый аудит и финансово-экономическая экспертиза для организаций и бизнеса.",
-
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
   alternates: {
     canonical: "/services",
   },
-
   openGraph: {
     type: "website",
     locale: "ru_RU",
     url: "https://www.exspert-audit.ru/services",
     siteName: "Эксперт-Аудит",
-    title: "Услуги аудиторской компании | Эксперт-Аудит",
-    description:
-      "Аудит, налоговый и бухгалтерский консалтинг, кадровый аудит и финансово-экономическая экспертиза для организаций и бизнеса.",
+    title: SOCIAL_TITLE,
+    description: PAGE_DESCRIPTION,
     images: [
       {
-        url: "/images/og-image.jpg",
+        url: OG_IMAGE,
         width: 1200,
         height: 630,
         alt: "Услуги аудиторской компании «Эксперт-Аудит»",
       },
     ],
   },
-
   twitter: {
     card: "summary_large_image",
-    title: "Услуги аудиторской компании | Эксперт-Аудит",
-    description:
-      "Аудит, налоговый и бухгалтерский консалтинг, кадровый аудит и финансово-экономическая экспертиза для организаций и бизнеса.",
-    images: ["/images/og-image.jpg"],
+    title: SOCIAL_TITLE,
+    description: PAGE_DESCRIPTION,
+    images: [OG_IMAGE],
   },
 };
 
@@ -47,9 +46,7 @@ export default function ServicesPage() {
       <section className="page-hero">
         <div className="container">
           <p className="eyebrow">НАПРАВЛЕНИЯ РАБОТЫ</p>
-
           <h1>Спектр предоставляемых услуг</h1>
-
           <p>
             Комплексная работа с финансовыми, налоговыми, кадровыми и
             экспертными задачами бизнеса.
@@ -59,29 +56,26 @@ export default function ServicesPage() {
 
       <section className="section">
         <div className={`container ${styles.serviceDetails}`}>
-          {services.map((s, i) => (
+          {services.map((service, index) => (
             <article
+              key={service.slug}
+              id={service.slug}
               className={styles.serviceDetail}
-              id={s.slug}
-              key={s.slug}
             >
               <div className={styles.serviceDetailNumber}>
-                {String(i + 1).padStart(2, "0")}
+                {String(index + 1).padStart(2, "0")}
               </div>
 
               <div>
-                <p className="eyebrow">{s.label}</p>
+                <p className="eyebrow">{service.label}</p>
+                <h2>{service.title}</h2>
+                <p className="lead">{service.description}</p>
 
-                <h2>{s.title}</h2>
-
-                <p className="lead">{s.description}</p>
-
-                {s.expertise ? (
+                {service.expertise ? (
                   <div>
-                    {s.expertise.map((section) => (
+                    {service.expertise.map((section) => (
                       <div key={section.title}>
                         <h3>{section.title}</h3>
-
                         <ul>
                           {section.items.map((item) => (
                             <li key={item}>{item}</li>
@@ -93,9 +87,8 @@ export default function ServicesPage() {
                 ) : (
                   <>
                     <h3>Что входит</h3>
-
                     <ul>
-                      {s.items?.map((item) => (
+                      {service.items?.map((item) => (
                         <li key={item}>{item}</li>
                       ))}
                     </ul>
@@ -104,13 +97,13 @@ export default function ServicesPage() {
 
                 <div className={styles.resultBox}>
                   <strong>Результат</strong>
-                  <p>{s.result}</p>
+                  <p>{service.result}</p>
                 </div>
 
-                {s.price && (
+                {service.price && (
                   <div className={styles.priceBox}>
                     <strong>Стоимость</strong>
-                    <p>{s.price}</p>
+                    <p>{service.price}</p>
                   </div>
                 )}
               </div>

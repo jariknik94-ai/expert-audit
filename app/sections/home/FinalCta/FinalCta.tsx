@@ -8,12 +8,9 @@ export function FinalCta() {
       <div className={`container ${styles.ctaInner}`}>
         <div>
           <p className="eyebrow">ГОТОВЫ ОБСУДИТЬ ЗАДАЧУ?</p>
-
           <h2>Расскажите, что происходит в вашем бизнесе.</h2>
-
           <p>
-            Мы поможем определить подходящий формат работы и ответим
-            на вопросы.
+            Мы поможем определить подходящий формат работы и ответим на вопросы.
           </p>
 
           <div className={styles.ctaContacts}>

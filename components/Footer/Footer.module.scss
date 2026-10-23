@@ -1,28 +1,22 @@
 .footer {
+  padding: 65px 0 25px;
   background: #050e1a;
   color: #c3cedd;
 
-  padding: 65px 0 25px;
-
   h3 {
     margin: 0 0 14px;
-
     color: #fff;
-
     font-size: 14px;
   }
 }
 
 .footerGrid {
   display: grid;
-
   grid-template-columns: 1.3fr 0.7fr 1fr;
-
   gap: 60px;
 
   a {
     display: block;
-
     margin: 7px 0;
   }
 
@@ -33,78 +27,51 @@
 
 .footerBrand {
   color: #fff;
-
   font-weight: 800;
-
   letter-spacing: 0.08em;
 }
 
 .contactInfo {
-  a {
-    display: block;
-
-    margin: 7px 0;
-
-    color: inherit;
-  }
-
   p {
     margin-top: 10px;
   }
-}
 
-.allContacts {
-  display: inline-block !important;
+  a.allContacts {
+    display: inline-block;
+    margin-top: 14px;
+    color: #aebbd0;
+    font-size: 13px;
+    font-weight: 700;
+    transition:
+      color 0.2s ease,
+      transform 0.2s ease;
 
-  margin-top: 14px !important;
-
-  color: #aebbd0 !important;
-
-  font-size: 13px;
-
-  font-weight: 700;
-
-  transition:
-    color 0.2s ease,
-    transform 0.2s ease;
-
-  &:hover {
-    color: #fff !important;
-
-    transform: translateX(2px);
+    &:hover {
+      color: #fff;
+      transform: translateX(2px);
+    }
   }
 }
 
 .contactLinks {
   display: flex;
-
   align-items: center;
   justify-content: flex-end;
-
   gap: 10px;
-
   margin-top: 30px;
 }
 
 .contactButton {
-  display: flex !important;
-
+  display: flex;
   align-items: center;
   justify-content: center;
-
   width: 42px;
   height: 42px;
-
-  margin: 0 !important;
-
+  margin: 0;
   border: 1px solid #1d2a3b;
-
   border-radius: 12px;
-
   background: #0a1624;
-
   color: #c3cedd;
-
   transition:
     transform 0.25s ease,
     background-color 0.25s ease,
@@ -118,11 +85,8 @@
 
   &:hover {
     transform: translateY(-3px);
-
     background: #14243a;
-
     border-color: #344b68;
-
     color: #fff;
   }
 
@@ -133,40 +97,27 @@
 
 .footerBottom {
   display: flex;
-
   align-items: center;
   justify-content: space-between;
-
   gap: 30px;
-
   margin-top: 22px;
   padding-top: 18px;
-
   border-top: 1px solid #1d2a3b;
-
-  font-size: 11px;
-
   color: #73849a;
+  font-size: 11px;
 }
 
 .cookieNotice {
   margin-top: 18px;
-
   color: #5f6f84;
-
   font-size: 9px;
-
   line-height: 1.5;
-
   text-align: center;
 
   a {
     color: #73849a;
-
     text-decoration: underline;
-
     text-underline-offset: 2px;
-
     transition: color 0.2s ease;
 
     &:hover {
@@ -178,7 +129,6 @@
 @media (max-width: 900px) {
   .footerGrid {
     grid-template-columns: 1fr 1fr;
-
     gap: 40px;
   }
 
@@ -194,13 +144,10 @@
 
   .footerGrid {
     grid-template-columns: 1fr;
-
     gap: 25px;
   }
 
   .contactLinks {
-    justify-content: flex-start;
-
     margin-top: 25px;
   }
 
@@ -211,17 +158,12 @@
 
   .footerBottom {
     display: grid;
-
     gap: 8px;
-
     margin-top: 18px;
   }
 
   .cookieNotice {
     margin-top: 16px;
-
     font-size: 8px;
-
-    line-height: 1.5;
   }
 }

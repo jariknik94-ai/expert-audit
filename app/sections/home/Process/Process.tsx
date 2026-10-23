@@ -3,31 +3,33 @@ import { SectionTitle } from "@/components/SectionTitle/SectionTitle";
 import styles from "./Process.module.scss";
 
 const processSteps = [
-  [
-    "01",
-    "Знакомимся с задачей",
-    "Определяем цели, объем работ и ключевые риски.",
-  ],
-  [
-    "02",
-    "Анализируем",
-    "Изучаем документы, процессы и необходимую сопутствующую информацию.",
-  ],
-  [
-    "03",
-    "Проверяем",
-    "Проводим процедуры и формируем доказательную базу.",
-  ],
-  [
-    "04",
-    "Объясняем",
-    "Формулируем существенные выводы и причины выявленных отклонений.",
-  ],
-  [
-    "05",
-    "Рекомендуем",
-    "Предлагаем практические меры по снижению рисков.",
-  ],
+  {
+    number: "01",
+    title: "Знакомимся с задачей",
+    description: "Определяем цели, объем работ и ключевые риски.",
+  },
+  {
+    number: "02",
+    title: "Анализируем",
+    description:
+      "Изучаем документы, процессы и необходимую сопутствующую информацию.",
+  },
+  {
+    number: "03",
+    title: "Проверяем",
+    description: "Проводим процедуры и формируем доказательную базу.",
+  },
+  {
+    number: "04",
+    title: "Объясняем",
+    description:
+      "Формулируем существенные выводы и причины выявленных отклонений.",
+  },
+  {
+    number: "05",
+    title: "Рекомендуем",
+    description: "Предлагаем практические меры по снижению рисков.",
+  },
 ] as const;
 
 export function Process() {
@@ -40,12 +42,10 @@ export function Process() {
         />
 
         <div className={styles.processGrid}>
-          {processSteps.map(([number, title, description]) => (
-            <div className={styles.processItem} key={number}>
+          {processSteps.map(({ number, title, description }) => (
+            <div key={number} className={styles.processItem}>
               <span>{number}</span>
-
               <h3>{title}</h3>
-
               <p>{description}</p>
             </div>
           ))}

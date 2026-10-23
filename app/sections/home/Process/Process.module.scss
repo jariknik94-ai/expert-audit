@@ -1,19 +1,15 @@
 .processGrid {
   display: grid;
-
   grid-template-columns: repeat(5, 1fr);
-
   gap: 12px;
 }
 
 .processItem {
   padding: 20px;
-
   border-left: 1px solid var(--line);
 
   span {
     color: var(--blue);
-
     font-weight: 800;
   }
 
@@ -23,7 +19,6 @@
 
   p {
     color: var(--muted);
-
     font-size: 14px;
   }
 }

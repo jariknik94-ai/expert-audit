@@ -11,27 +11,28 @@ export function CookieNotice() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const consent = localStorage.getItem(COOKIE_CONSENT_KEY);
-
-    if (!consent) {
+    try {
+      setIsVisible(!localStorage.getItem(COOKIE_CONSENT_KEY));
+    } catch {
       setIsVisible(true);
     }
   }, []);
 
   const handleAccept = () => {
-    localStorage.setItem(COOKIE_CONSENT_KEY, "accepted");
+    try {
+      localStorage.setItem(COOKIE_CONSENT_KEY, "accepted");
+    } catch {
+      // Если хранилище недоступно, закрываем баннер до перезагрузки страницы.
+    }
     setIsVisible(false);
   };
 
-  if (!isVisible) {
-    return null;
-  }
+  if (!isVisible) return null;
 
   return (
     <div
       className={styles.cookieNotice}
-      role="dialog"
-      aria-modal="true"
+      role="region"
       aria-label="Уведомление о cookies"
     >
       <div className={styles.content}>
@@ -41,8 +42,7 @@ export function CookieNotice() {
           настройках браузера. Пожалуйста, ознакомьтесь с{" "}
           <Link href="/privacy">
             политикой обработки персональных данных
-          </Link>
-          .
+          </Link>.
         </p>
 
         <button type="button" onClick={handleAccept}>

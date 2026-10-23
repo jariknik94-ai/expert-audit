@@ -11,13 +11,15 @@ import {
   trackWhatsAppClick,
 } from "@/lib/analytics";
 
-type AnalyticsEvent =
-  | "phone"
-  | "email"
-  | "telegram"
-  | "whatsapp"
-  | "contact"
-  | "annual_report";
+const eventHandlers = {
+  phone: trackPhoneClick,
+  email: trackEmailClick,
+  telegram: trackTelegramClick,
+  whatsapp: trackWhatsAppClick,
+  contact: trackContactClick,
+};
+
+type AnalyticsEvent = keyof typeof eventHandlers | "annual_report";
 
 type AnalyticsLinkProps = {
   href: string;
@@ -42,34 +44,15 @@ export function AnalyticsLink({
   year,
   children,
 }: AnalyticsLinkProps) {
-  const handleClick = () => {
-    switch (event) {
-      case "phone":
-        trackPhoneClick(location);
-        break;
-
-      case "email":
-        trackEmailClick(location);
-        break;
-
-      case "telegram":
-        trackTelegramClick(location);
-        break;
-
-      case "whatsapp":
-        trackWhatsAppClick(location);
-        break;
-
-      case "contact":
-        trackContactClick(location);
-        break;
-
-      case "annual_report":
-        if (year !== undefined) {
-          trackAnnualReportDownload(year, location);
-        }
-        break;
+  const handleClick = (): void => {
+    if (event === "annual_report") {
+      if (year !== undefined) {
+        trackAnnualReportDownload(year, location);
+      }
+      return;
     }
+
+    eventHandlers[event](location);
   };
 
   return (

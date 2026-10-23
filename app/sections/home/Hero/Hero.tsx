@@ -4,13 +4,17 @@ import { AnalyticsLink } from "@/components/AnalyticsLink/AnalyticsLink";
 
 import styles from "./Hero.module.scss";
 
+const heroProof = [
+  { value: "10+", label: "лет опыта команды" },
+  { value: "6", label: "ключевых направлений" },
+  { value: "360°", label: "взгляд на финансовые риски" },
+] as const;
+
 export function Hero() {
   return (
     <section className={styles.hero}>
       <div className={`container ${styles.heroGrid}`}>
         <div>
-          {/* <p className="eyebrow">Эксперт-Аудит · КЕМЕРОВО</p> */}
-
           <h1>
             Проверяем учет.
             <br />
@@ -36,26 +40,18 @@ export function Hero() {
           </div>
 
           <div className={styles.heroProof}>
-            <div>
-              <strong>10+</strong>
-              <span>лет опыта команды</span>
-            </div>
-
-            <div>
-              <strong>6</strong>
-              <span>ключевых направлений</span>
-            </div>
-
-            <div>
-              <strong>360°</strong>
-              <span>взгляд на финансовые риски</span>
-            </div>
+            {heroProof.map(({ value, label }) => (
+              <div key={label}>
+                <strong>{value}</strong>
+                <span>{label}</span>
+              </div>
+            ))}
           </div>
         </div>
 
         <div className={styles.heroVisual}>
-          <div className={`${styles.orb} ${styles.orbOne}`} />
-          <div className={`${styles.orb} ${styles.orbTwo}`} />
+          <div className={`${styles.orb} ${styles.orbOne}`} aria-hidden="true" />
+          <div className={`${styles.orb} ${styles.orbTwo}`} aria-hidden="true" />
 
           <div className={styles.heroImage}>
             <Image

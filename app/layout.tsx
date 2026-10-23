@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Suspense } from "react";
-
-// @ts-ignore
-import "./globals.scss";
+import { Suspense, type ReactNode } from "react";
 
 import { AppVersion } from "@/components/AppVersion/AppVersion";
 import { CookieNotice } from "@/components/CookieNotice/CookieNotice";
@@ -11,6 +8,15 @@ import { Footer } from "@/components/Footer/Footer";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics/GoogleAnalytics";
 import { Header } from "@/components/Header/Header";
 import { YandexMetrika } from "@/components/YandexMetrika/YandexMetrika";
+
+import "./globals.scss";
+
+const SITE_NAME = "Эксперт-Аудит";
+const SITE_URL = "https://www.exspert-audit.ru";
+const SITE_TITLE = `${SITE_NAME} — аудит и финансовый консалтинг`;
+const SITE_DESCRIPTION =
+  "Аудиторская компания «Эксперт-Аудит». Аудит, налоговый и бухгалтерский консалтинг, кадровый аудит и финансово-экономическая экспертиза для бизнеса.";
+const OG_IMAGE = "/images/og-image.jpg";
 
 const manrope = localFont({
   src: [
@@ -45,55 +51,44 @@ const manrope = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.exspert-audit.ru"),
-
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Эксперт-Аудит — аудит и финансовый консалтинг",
-    template: "%s | Эксперт-Аудит",
+    default: SITE_TITLE,
+    template: `%s | ${SITE_NAME}`,
   },
-
-  description:
-    "Аудиторская компания «Эксперт-Аудит». Аудит, налоговый и бухгалтерский консалтинг, кадровый аудит и финансово-экономическая экспертиза для бизнеса.",
-
+  description: SITE_DESCRIPTION,
   verification: {
     yandex: "6bc42f71f06f3688",
   },
-
   alternates: {
     canonical: "/",
   },
-
   robots: {
     index: true,
     follow: true,
   },
-
   openGraph: {
     type: "website",
     locale: "ru_RU",
-    url: "https://www.exspert-audit.ru/",
-    siteName: "Эксперт-Аудит",
-    title: "Эксперт-Аудит — аудит и финансовый консалтинг",
-    description:
-      "Аудиторская компания «Эксперт-Аудит». Аудит, налоговый и бухгалтерский консалтинг, кадровый аудит и финансово-экономическая экспертиза для бизнеса.",
+    url: `${SITE_URL}/`,
+    siteName: SITE_NAME,
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
     images: [
       {
-        url: "/images/og-image.jpg",
+        url: OG_IMAGE,
         width: 1200,
         height: 630,
         alt: "Эксперт-Аудит — аудиторская компания",
       },
     ],
   },
-
   twitter: {
     card: "summary_large_image",
-    title: "Эксперт-Аудит — аудит и финансовый консалтинг",
-    description:
-      "Аудиторская компания «Эксперт-Аудит». Аудит, налоговый и бухгалтерский консалтинг, кадровый аудит и финансово-экономическая экспертиза для бизнеса.",
-    images: ["/images/og-image.jpg"],
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    images: [OG_IMAGE],
   },
-
   icons: {
     icon: [
       {
@@ -101,17 +96,7 @@ export const metadata: Metadata = {
         type: "image/x-icon",
         sizes: "32x32",
       },
-      // {
-      //   url: "/icons/favicon.svg",
-      //   type: "image/svg+xml",
-      // },
-      // {
-      //   url: "/icons/favicon-32.png",
-      //   type: "image/png",
-      //   sizes: "32x32",
-      // },
     ],
-
     apple: [
       {
         url: "/icons/apple-touch-icon.png",
@@ -122,11 +107,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+type RootLayoutProps = Readonly<{
+  children: ReactNode;
+}>;
+
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="ru">
       <body className={manrope.variable}>
@@ -136,9 +121,7 @@ export default function RootLayout({
         </Suspense>
 
         <Header />
-
         <main>{children}</main>
-
         <CookieNotice />
         <AppVersion />
         <Footer />

@@ -1,16 +1,12 @@
 import styles from "./Disclosure.module.scss";
 
-interface DisclosureProps {
+type DisclosureProps = {
   title: string;
   description: string[];
   items: string[];
-}
+};
 
-export function Disclosure({
-  title,
-  description,
-  items,
-}: DisclosureProps) {
+export function Disclosure({ title, description, items }: DisclosureProps) {
   return (
     <details className={styles.disclosure}>
       <summary>

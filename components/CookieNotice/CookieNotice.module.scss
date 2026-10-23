@@ -1,24 +1,20 @@
 .cookieNotice {
+  --notice-shift-x: -50%;
+  --notice-enter-y: 12px;
+
   position: fixed;
   left: 50%;
   bottom: 22px;
   z-index: 1000;
-
   width: min(calc(100% - 40px), 780px);
-
   padding: 14px 16px;
-
-  transform: translateX(-50%);
-
-  background: rgba(5, 14, 26, 0.97);
   border: 1px solid #1d2a3b;
   border-radius: 14px;
-
+  background: rgba(5, 14, 26, 0.97);
   box-shadow: 0 14px 45px rgba(0, 0, 0, 0.22);
-
-  backdrop-filter: blur(12px);
+  transform: translateX(var(--notice-shift-x));
   -webkit-backdrop-filter: blur(12px);
-
+  backdrop-filter: blur(12px);
   animation: cookieIn 0.3s ease-out;
 }
 
@@ -26,14 +22,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   gap: 18px;
 
   p {
     margin: 0;
-
     color: #aebbd0;
-
     font-size: 11px;
     line-height: 1.45;
   }
@@ -42,7 +35,6 @@
     color: #cfe1ff;
     text-decoration: underline;
     text-underline-offset: 2px;
-
     transition: color 0.2s ease;
 
     &:hover {
@@ -52,22 +44,16 @@
 
   button {
     flex: 0 0 auto;
-
     min-width: 58px;
     padding: 7px 14px;
-
     border: 1px solid #344b68;
     border-radius: 8px;
-
     background: #14243a;
     color: #fff;
-
     font: inherit;
     font-size: 11px;
     font-weight: 700;
-
     cursor: pointer;
-
     transition:
       background-color 0.2s ease,
       border-color 0.2s ease,
@@ -93,12 +79,12 @@
 @keyframes cookieIn {
   from {
     opacity: 0;
-    transform: translate(-50%, 12px);
+    transform: translate(var(--notice-shift-x), var(--notice-enter-y));
   }
 
   to {
     opacity: 1;
-    transform: translate(-50%, 0);
+    transform: translate(var(--notice-shift-x), 0);
   }
 }
 
@@ -114,16 +100,15 @@
 
 @media (max-width: 640px) {
   .cookieNotice {
+    --notice-shift-x: 0%;
+    --notice-enter-y: 10px;
+
     left: 15px;
     bottom: 15px;
-
     width: calc(100% - 30px);
-
     padding: 12px 13px;
-
-    transform: none;
-
     border-radius: 12px;
+    transform: none;
   }
 
   .content {
@@ -138,18 +123,6 @@
       min-width: 52px;
       padding: 7px 11px;
       font-size: 10px;
-    }
-  }
-
-  @keyframes cookieIn {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateY(0);
     }
   }
 }

@@ -1,103 +1,80 @@
 "use client";
 
-import { useCallback, useEffect } from "react";
+import { useEffect } from "react";
 
 const STORAGE_KEY = "expert-audit-build-version";
 const VERSION_CHECK_INTERVAL = 5 * 60 * 1000;
 
+function getVersion(data: unknown): string | null {
+  if (
+    typeof data !== "object" ||
+    data === null ||
+    !("version" in data) ||
+    typeof data.version !== "string" ||
+    data.version.trim().length === 0
+  ) {
+    return null;
+  }
+
+  return data.version;
+}
+
 export function AppVersion() {
-  const checkVersion = useCallback(async () => {
-    try {
-      const response = await fetch(
-        `/api/version?t=${Date.now()}`,
-        {
-          cache: "no-store",
-          headers: {
-            "Cache-Control": "no-cache",
-          },
-        },
-      );
-
-      if (!response.ok) {
-        return;
-      }
-
-      const data: { version?: string } = await response.json();
-
-      if (!data.version) {
-        return;
-      }
-
-      const knownVersion = sessionStorage.getItem(STORAGE_KEY);
-
-      /*
-       * Первый запуск после установки механизма проверки.
-       * Запоминаем текущую версию и не перезагружаем страницу.
-       */
-      if (!knownVersion) {
-        sessionStorage.setItem(STORAGE_KEY, data.version);
-        return;
-      }
-
-      /*
-       * Сервер сообщает, что опубликована новая сборка.
-       */
-      if (knownVersion === data.version) {
-        return;
-      }
-
-      /*
-       * Сохраняем новую версию до перезагрузки,
-       * чтобы не получить бесконечный цикл reload.
-       */
-      sessionStorage.setItem(STORAGE_KEY, data.version);
-
-      window.location.reload();
-    } catch {
-      /*
-       * Проверка версии не должна влиять
-       * на работу сайта при временной ошибке сети.
-       */
-    }
-  }, []);
-
   useEffect(() => {
-    /*
-     * Проверяем версию сразу после загрузки страницы.
-     */
-    void checkVersion();
+    let controller: AbortController | null = null;
+    let disposed = false;
 
-    /*
-     * Периодическая проверка открытой вкладки.
-     */
-    const interval = window.setInterval(() => {
-      void checkVersion();
-    }, VERSION_CHECK_INTERVAL);
+    const checkVersion = async (): Promise<void> => {
+      if (disposed || controller) return;
 
-    /*
-     * Если пользователь вернулся на вкладку,
-     * сразу проверяем наличие новой версии.
-     */
+      const requestController = new AbortController();
+      controller = requestController;
+
+      try {
+        const response = await fetch(`/api/version?t=${Date.now()}`, {
+          cache: "no-store",
+          headers: { "Cache-Control": "no-cache" },
+          signal: requestController.signal,
+        });
+        if (!response.ok) return;
+
+        const data: unknown = await response.json();
+        const version = getVersion(data);
+        if (disposed || !version) return;
+
+        const knownVersion = sessionStorage.getItem(STORAGE_KEY);
+        if (knownVersion === version) return;
+
+        // Записываем версию до reload, чтобы избежать цикла перезагрузок.
+        sessionStorage.setItem(STORAGE_KEY, version);
+        if (knownVersion) window.location.reload();
+      } catch {
+        // Ошибки сети и хранилища не должны мешать работе сайта.
+      } finally {
+        controller = null;
+      }
+    };
+
     const handleVisibilityChange = () => {
       if (document.visibilityState === "visible") {
         void checkVersion();
       }
     };
 
-    document.addEventListener(
-      "visibilitychange",
-      handleVisibilityChange,
-    );
+    void checkVersion();
+    const interval = window.setInterval(() => {
+      void checkVersion();
+    }, VERSION_CHECK_INTERVAL);
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
 
     return () => {
+      disposed = true;
       window.clearInterval(interval);
-
-      document.removeEventListener(
-        "visibilitychange",
-        handleVisibilityChange,
-      );
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      controller?.abort();
     };
-  }, [checkVersion]);
+  }, []);
 
   return null;
 }

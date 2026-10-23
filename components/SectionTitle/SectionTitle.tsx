@@ -1,11 +1,11 @@
 import styles from "./SectionTitle.module.scss";
 
-interface SectionTitleProps {
+type SectionTitleProps = {
   kicker: string;
   title: string;
   light?: boolean;
   wide?: boolean;
-}
+};
 
 export function SectionTitle({
   kicker,
@@ -13,14 +13,17 @@ export function SectionTitle({
   light = false,
   wide = false,
 }: SectionTitleProps) {
-  return (
-    <div
-      className={`${styles.sectionTitle} ${
-        light ? styles.light : ""
-      } ${wide ? styles.wide : ""}`}
-    >
-      <p className="eyebrow">{kicker}</p>
+  const className = [
+    styles.sectionTitle,
+    light && styles.light,
+    wide && styles.wide,
+  ]
+    .filter(Boolean)
+    .join(" ");
 
+  return (
+    <div className={className}>
+      <p className="eyebrow">{kicker}</p>
       <h2>{title}</h2>
     </div>
   );

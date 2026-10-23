@@ -1,34 +1,48 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, type KeyboardEvent, type PointerEvent } from "react";
 
 import { SectionTitle } from "@/components/SectionTitle/SectionTitle";
 import { clients } from "@/lib/clients";
 
 import styles from "./Clients.module.scss";
 
-export function Clients() {
-  const [flippedIndex, setFlippedIndex] = useState<number | null>(null);
+function getShortName(name: string): string | null {
+  if (name.includes("ОЭСК")) return "ОЭСК";
+  if (name.includes("Гарант")) return "Гарант";
+  return null;
+}
 
-  const handleCardClick = (index: number) => {
-    setFlippedIndex(index);
+export function Clients() {
+  const [flippedLogo, setFlippedLogo] = useState<string | null>(null);
+
+  const toggleCard = (logo: string) => {
+    setFlippedLogo((current) => (current === logo ? null : logo));
   };
 
-  const handleCardPointerEnter = (
-    index: number,
-    event: React.PointerEvent<HTMLElement>,
+  const handlePointerEnter = (
+    logo: string,
+    event: PointerEvent<HTMLElement>,
+  ) => {
+    if (event.pointerType === "mouse") setFlippedLogo(logo);
+  };
+
+  const handlePointerLeave = (
+    logo: string,
+    event: PointerEvent<HTMLElement>,
   ) => {
     if (event.pointerType === "mouse") {
-      setFlippedIndex(index);
+      setFlippedLogo((current) => (current === logo ? null : current));
     }
   };
 
-  const handleCardPointerLeave = (
-    event: React.PointerEvent<HTMLElement>,
-  ) => {
-    if (event.pointerType === "mouse") {
-      setFlippedIndex(null);
+  const handleKeyDown = (logo: string, event: KeyboardEvent<HTMLElement>) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      toggleCard(logo);
+    } else if (event.key === "Escape") {
+      setFlippedLogo(null);
     }
   };
 
@@ -41,59 +55,54 @@ export function Clients() {
         />
 
         <div className={styles.clientGrid}>
-          {clients.map((client, index) => {
-            const isFlipped = flippedIndex === index;
+          {clients.map((client) => {
+            const isFlipped = flippedLogo === client.logo;
+            const shortName = getShortName(client.name);
+            const className = isFlipped
+              ? `${styles.clientItem} ${styles.flipped}`
+              : styles.clientItem;
 
             return (
               <article
-                className={`${styles.clientItem} ${
-                  isFlipped ? styles.flipped : ""
-                }`}
-                key={`${client.logo}-${index}`}
-                onPointerEnter={(event) =>
-                  handleCardPointerEnter(index, event)
-                }
-                onPointerLeave={handleCardPointerLeave}
-                onClick={() => handleCardClick(index)}
+                key={client.logo}
+                className={className}
+                role="button"
+                tabIndex={0}
+                aria-pressed={isFlipped}
+                aria-label={client.name}
+                aria-description={isFlipped ? client.description : undefined}
+                onPointerEnter={(event) => handlePointerEnter(client.logo, event)}
+                onPointerLeave={(event) => handlePointerLeave(client.logo, event)}
+                onClick={() => toggleCard(client.logo)}
+                onKeyDown={(event) => handleKeyDown(client.logo, event)}
               >
                 <div className={styles.cardInner}>
-                  <div className={styles.cardFront}>
+                  <div className={styles.cardFront} aria-hidden={isFlipped}>
                     <div className={styles.logoWrapper}>
                       <Image
                         src={client.logo}
                         alt={client.name}
                         fill
-                        sizes="(max-width: 640px) 42vw, (max-width: 980px) 28vw, 220px"
+                        sizes="(max-width: 640px) 42vw, (max-width: 980px) 45vw, 210px"
                         className={styles.logo}
                       />
                     </div>
-
-                    {/* Для клиентов с длинным юридическим названием
-                        показываем короткое название под логотипом */}
-                    {client.name.includes("ОЭСК") && (
-                      <span className={styles.clientName}>ОЭСК</span>
+                    {shortName && (
+                      <span className={styles.clientName}>{shortName}</span>
                     )}
-
-                    {client.name.includes("Гарант") && (
-                      <span className={styles.clientName}>Гарант</span>
-                    )}
-
                     <span className={styles.cardHint}>
                       <span className={styles.desktopHint}>
                         Наведите, чтобы узнать подробнее
                       </span>
-
                       <span className={styles.mobileHint}>
                         Нажмите, чтобы узнать подробнее
                       </span>
                     </span>
                   </div>
 
-                  <div className={styles.cardBack}>
+                  <div className={styles.cardBack} aria-hidden={!isFlipped}>
                     <span className={styles.backLabel}>КЛИЕНТ</span>
-
                     <h3>{client.name}</h3>
-
                     <p>{client.description}</p>
                   </div>
                 </div>

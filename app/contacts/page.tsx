@@ -7,45 +7,53 @@ import { Map } from "@/components/Map/Map";
 
 import styles from "./page.module.scss";
 
+const PAGE_TITLE = "Контакты аудиторской компании в Кемерово";
+const SOCIAL_TITLE = `${PAGE_TITLE} | Эксперт-Аудит`;
+const PAGE_DESCRIPTION =
+  "Контакты ООО «Эксперт-Аудит» в Кемерово: адрес офиса, телефон, электронная почта и расположение на карте.";
+const OG_IMAGE = "/images/og-image.jpg";
+
+const PHONE = {
+  href: "tel:+79236174055",
+  label: "+7 923 617 40 55",
+};
+
+const EMAIL = {
+  href: "mailto:exspert-audit@mail.ru",
+  label: "exspert-audit@mail.ru",
+};
+
 export const metadata: Metadata = {
-  title: "Контакты аудиторской компании в Кемерово",
-
-  description:
-    "Контакты ООО «Эксперт-Аудит» в Кемерово: адрес офиса, телефон, электронная почта и расположение на карте.",
-
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
   alternates: {
     canonical: "/contacts",
   },
-
   robots: {
     index: true,
     follow: true,
   },
-
   openGraph: {
     type: "website",
     locale: "ru_RU",
     url: "https://www.exspert-audit.ru/contacts",
     siteName: "Эксперт-Аудит",
-    title: "Контакты аудиторской компании в Кемерово | Эксперт-Аудит",
-    description:
-      "Контакты ООО «Эксперт-Аудит» в Кемерово: адрес офиса, телефон, электронная почта и расположение на карте.",
+    title: SOCIAL_TITLE,
+    description: PAGE_DESCRIPTION,
     images: [
       {
-        url: "/images/og-image.jpg",
+        url: OG_IMAGE,
         width: 1200,
         height: 630,
         alt: "Контакты аудиторской компании «Эксперт-Аудит»",
       },
     ],
   },
-
   twitter: {
     card: "summary_large_image",
-    title: "Контакты аудиторской компании в Кемерово | Эксперт-Аудит",
-    description:
-      "Контакты ООО «Эксперт-Аудит» в Кемерово: адрес офиса, телефон, электронная почта и расположение на карте.",
-    images: ["/images/og-image.jpg"],
+    title: SOCIAL_TITLE,
+    description: PAGE_DESCRIPTION,
+    images: [OG_IMAGE],
   },
 };
 
@@ -55,12 +63,9 @@ export default function ContactsPage() {
       <section className="page-hero">
         <div className="container">
           <p className="eyebrow">ЭКСПЕРТ-АУДИТ · КЕМЕРОВО</p>
-
           <h1>Контакты</h1>
-
           <p>
-            Будем рады обсудить вашу задачу и подобрать подходящий формат
-            работы.
+            Будем рады обсудить вашу задачу и подобрать подходящий формат работы.
           </p>
         </div>
       </section>
@@ -70,42 +75,38 @@ export default function ContactsPage() {
           <div className={styles.contactsGrid}>
             <div className={styles.info}>
               <p className="eyebrow">СВЯЖИТЕСЬ С НАМИ</p>
-
               <h2>Будем рады помочь</h2>
 
               <p className={styles.intro}>
-                Если у вас есть вопросы по аудиту, консалтингу или
-                экспертизе, свяжитесь с нами удобным способом.
+                Если у вас есть вопросы по аудиту, консалтингу или экспертизе,
+                свяжитесь с нами удобным способом.
               </p>
 
               <div className={styles.contactList}>
                 <div className={styles.contactItem}>
                   <span className={styles.label}>Телефон</span>
-
                   <AnalyticsLink
-                    href="tel:+79236174055"
+                    href={PHONE.href}
                     event="phone"
                     location="contacts_page"
                   >
-                    +7 923 617 40 55
+                    {PHONE.label}
                   </AnalyticsLink>
                 </div>
 
                 <div className={styles.contactItem}>
                   <span className={styles.label}>Электронная почта</span>
-
                   <AnalyticsLink
-                    href="mailto:exspert-audit@mail.ru"
+                    href={EMAIL.href}
                     event="email"
                     location="contacts_page"
                   >
-                    exspert-audit@mail.ru
+                    {EMAIL.label}
                   </AnalyticsLink>
                 </div>
 
                 <div className={styles.contactItem}>
                   <span className={styles.label}>Адрес офиса</span>
-
                   <address>
                     650023, Кемеровская область – Кузбасс,
                     <br />
@@ -118,23 +119,23 @@ export default function ContactsPage() {
 
               <div className={styles.actions}>
                 <AnalyticsLink
-                  href="tel:+79236174055"
+                  href={PHONE.href}
                   className="button button-primary"
                   ariaLabel="Позвонить в Эксперт-Аудит"
                   event="phone"
                   location="contacts_page_action"
                 >
-                  <FaPhoneAlt />
+                  <FaPhoneAlt aria-hidden="true" />
                 </AnalyticsLink>
 
                 <AnalyticsLink
-                  href="mailto:exspert-audit@mail.ru"
+                  href={EMAIL.href}
                   className="button button-ghost"
                   ariaLabel="Написать на электронную почту"
                   event="email"
                   location="contacts_page_action"
                 >
-                  <FaEnvelope />
+                  <FaEnvelope aria-hidden="true" />
                 </AnalyticsLink>
               </div>
 
@@ -147,7 +148,6 @@ export default function ContactsPage() {
               <div className={styles.mapHeader}>
                 <div>
                   <p className="eyebrow">ГДЕ МЫ НАХОДИМСЯ</p>
-
                   <h2>Офис «Эксперт-Аудит»</h2>
                 </div>
               </div>

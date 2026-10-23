@@ -3,15 +3,15 @@
   margin-bottom: 50px;
 
   h2 {
+    margin: 0;
     font-size: clamp(35px, 4vw, 56px);
     line-height: 1.04;
     letter-spacing: -0.04em;
-    margin: 0;
   }
 
   &.wide {
-    max-width: none;
     width: 100%;
+    max-width: none;
   }
 
   &.light {

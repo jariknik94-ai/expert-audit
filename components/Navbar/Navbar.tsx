@@ -14,43 +14,18 @@ const navItems = [
   { href: "/team", label: "Сотрудники" },
   { href: "/disclosure", label: "Раскрытие информации" },
   { href: "/contacts", label: "Контакты" },
-];
+] as const;
 
 export function Navbar() {
   const pathname = usePathname();
-
   const [menuOpen, setMenuOpen] = useState(false);
-  const [darkTheme, setDarkTheme] = useState(true);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
-
-    if (savedTheme === "light") {
-      setDarkTheme(false);
-      document.documentElement.classList.add("light");
-    } else {
-      setDarkTheme(true);
-      document.documentElement.classList.remove("light");
-    }
+    document.documentElement.classList.toggle("light", savedTheme === "light");
   }, []);
 
-  const toggleTheme = () => {
-    const nextTheme = !darkTheme;
-
-    setDarkTheme(nextTheme);
-
-    if (nextTheme) {
-      document.documentElement.classList.remove("light");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.add("light");
-      localStorage.setItem("theme", "light");
-    }
-  };
-
-  const closeMenu = () => {
-    setMenuOpen(false);
-  };
+  const closeMenu = () => setMenuOpen(false);
 
   const handleNavClick = (href: string) => {
     if (href === "/contacts") {
@@ -60,11 +35,16 @@ export function Navbar() {
     closeMenu();
   };
 
+  const menuButtonClassName = menuOpen
+    ? `${styles.menuButton} ${styles.menuButtonActive}`
+    : styles.menuButton;
+
+  const navContentClassName = menuOpen
+    ? `${styles.navContent} ${styles.navContentOpen}`
+    : styles.navContent;
+
   return (
-    <nav
-      className={styles.navbar}
-      aria-label="Основная навигация"
-    >
+    <nav className={styles.navbar} aria-label="Основная навигация">
       <div className={`container ${styles.navbarInner}`}>
         <Link
           href="/"
@@ -86,19 +66,14 @@ export function Navbar() {
             <span>
               <strong>Эксперт</strong>-Аудит
             </span>
-
-            <small>
-              АУДИТ · КОНСАЛТИНГ · ЭКСПЕРТИЗА
-            </small>
+            <small>АУДИТ · КОНСАЛТИНГ · ЭКСПЕРТИЗА</small>
           </span>
         </Link>
 
         <button
           type="button"
-          className={`${styles.menuButton} ${
-            menuOpen ? styles.menuButtonActive : ""
-          }`}
-          onClick={() => setMenuOpen(!menuOpen)}
+          className={menuButtonClassName}
+          onClick={() => setMenuOpen((open) => !open)}
           aria-label={menuOpen ? "Закрыть меню" : "Открыть меню"}
           aria-expanded={menuOpen}
           aria-controls="main-navigation"
@@ -108,27 +83,21 @@ export function Navbar() {
           <span />
         </button>
 
-        <div
-          id="main-navigation"
-          className={`${styles.navContent} ${
-            menuOpen ? styles.navContentOpen : ""
-          }`}
-        >
+        <div id="main-navigation" className={navContentClassName}>
           <div className={styles.navLinks}>
-            {navItems.map((item) => {
+            {navItems.map(({ href, label }) => {
               const isActive =
-                pathname === item.href ||
-                pathname.startsWith(`${item.href}/`);
+                pathname === href || pathname?.startsWith(`${href}/`) === true;
 
               return (
                 <Link
-                  key={item.href}
-                  href={item.href}
+                  key={href}
+                  href={href}
                   className={isActive ? styles.active : ""}
-                  onClick={() => handleNavClick(item.href)}
+                  onClick={() => handleNavClick(href)}
                   aria-current={isActive ? "page" : undefined}
                 >
-                  {item.label}
+                  {label}
                 </Link>
               );
             })}

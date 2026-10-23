@@ -14,11 +14,11 @@ export function HomeServices() {
         />
 
         <div className={styles.serviceGrid}>
-          {services.map((service, i) => (
+          {services.map((service, index) => (
             <ServiceCard
               key={service.slug}
               service={service}
-              index={i + 1}
+              index={index + 1}
             />
           ))}
         </div>

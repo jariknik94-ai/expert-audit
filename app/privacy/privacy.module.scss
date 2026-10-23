@@ -2,23 +2,32 @@
   max-width: 850px;
   margin: 0 auto;
 
+  h2,
+  h3,
+  strong {
+    color: var(--ink);
+  }
+
   h2 {
     margin: 45px 0 18px;
     font-size: 28px;
     line-height: 1.25;
-    color: var(--ink);
   }
 
   h3 {
     margin: 32px 0 14px;
     font-size: 21px;
     line-height: 1.35;
-    color: var(--ink);
+  }
+
+  p,
+  ul,
+  ol {
+    color: var(--muted);
   }
 
   p {
     margin: 0 0 16px;
-    color: var(--muted);
     line-height: 1.7;
   }
 
@@ -26,7 +35,6 @@
   ol {
     margin: 0 0 20px;
     padding-left: 24px;
-    color: var(--muted);
   }
 
   li {
@@ -38,10 +46,6 @@
     color: var(--blue);
     text-decoration: underline;
     text-underline-offset: 3px;
-  }
-
-  strong {
-    color: var(--ink);
   }
 }
 
