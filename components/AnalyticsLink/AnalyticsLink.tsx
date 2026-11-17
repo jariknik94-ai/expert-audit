@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import type { ReactNode } from "react";
 
 import {
@@ -54,6 +55,20 @@ export function AnalyticsLink({
 
     eventHandlers[event](location);
   };
+
+  if (href.startsWith("/") && !href.startsWith("//") && !target) {
+    return (
+      <Link
+        href={href}
+        className={className}
+        aria-label={ariaLabel}
+        rel={rel}
+        onClick={handleClick}
+      >
+        {children}
+      </Link>
+    );
+  }
 
   return (
     <a

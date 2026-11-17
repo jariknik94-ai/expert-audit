@@ -4,8 +4,7 @@ import Script from "next/script";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 
-const METRIKA_ID = 97203330;
-const READY_EVENT = "yandex-metrika-ready";
+import { METRIKA_ID, METRIKA_READY_EVENT } from "@/lib/analytics";
 
 const METRIKA_LOADER = `
   (function () {
@@ -61,7 +60,7 @@ const METRIKA_LOADER = `
 
       window.__lastMetrikaUrl = initialUrl;
       window.__yandexMetrikaReady = true;
-      window.dispatchEvent(new Event("${READY_EVENT}"));
+      window.dispatchEvent(new Event("${METRIKA_READY_EVENT}"));
     }
 
     events.forEach(function (event) {
@@ -96,8 +95,8 @@ export function YandexMetrika() {
       return;
     }
 
-    window.addEventListener(READY_EVENT, sendPageView);
-    return () => window.removeEventListener(READY_EVENT, sendPageView);
+    window.addEventListener(METRIKA_READY_EVENT, sendPageView);
+    return () => window.removeEventListener(METRIKA_READY_EVENT, sendPageView);
   }, [pathname, search]);
 
   return (

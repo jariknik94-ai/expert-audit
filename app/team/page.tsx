@@ -25,8 +25,8 @@ export const metadata: Metadata = {
     description: SOCIAL_DESCRIPTION,
     images: [{
       url: OG_IMAGE,
-      width: 1200,
-      height: 630,
+      width: 1424,
+      height: 752,
       alt: "Команда аудиторов и экспертов «Эксперт-Аудит»",
     }],
   },

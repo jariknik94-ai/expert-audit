@@ -72,11 +72,22 @@ export function Footer() {
 
         <div>
           <h3>Навигация</h3>
-          {navItems.map(({ href, label }) => (
-            <Link key={href} href={href}>
-              {label}
-            </Link>
-          ))}
+          {navItems.map(({ href, label }) =>
+            href === "/contacts" ? (
+              <AnalyticsLink
+                key={href}
+                href={href}
+                event="contact"
+                location="footer_navigation"
+              >
+                {label}
+              </AnalyticsLink>
+            ) : (
+              <Link key={href} href={href}>
+                {label}
+              </Link>
+            )
+          )}
         </div>
 
         <div>
@@ -101,9 +112,14 @@ export function Footer() {
               <br />
               д. 18 к. 3 кв. 108
             </p>
-            <Link href="/contacts" className={styles.allContacts}>
+            <AnalyticsLink
+              href="/contacts"
+              className={styles.allContacts}
+              event="contact"
+              location="footer_contacts"
+            >
               Все контакты →
-            </Link>
+            </AnalyticsLink>
           </div>
         </div>
       </div>

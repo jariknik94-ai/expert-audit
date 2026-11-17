@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState, type KeyboardEvent, type PointerEvent } from "react";
+import { useRef, useState, type KeyboardEvent, type PointerEvent } from "react";
 
 import { SectionTitle } from "@/components/SectionTitle/SectionTitle";
 import { clients } from "@/lib/clients";
@@ -16,6 +16,7 @@ function getShortName(name: string): string | null {
 
 export function Clients() {
   const [flippedLogo, setFlippedLogo] = useState<string | null>(null);
+  const pointerType = useRef<string | null>(null);
 
   const toggleCard = (logo: string) => {
     setFlippedLogo((current) => (current === logo ? null : logo));
@@ -73,7 +74,17 @@ export function Clients() {
                 aria-description={isFlipped ? client.description : undefined}
                 onPointerEnter={(event) => handlePointerEnter(client.logo, event)}
                 onPointerLeave={(event) => handlePointerLeave(client.logo, event)}
-                onClick={() => toggleCard(client.logo)}
+                onPointerDown={(event) => {
+                  pointerType.current = event.pointerType;
+                }}
+                onClick={(event) => {
+                  if (event.detail > 0 && pointerType.current === "mouse") {
+                    setFlippedLogo(client.logo);
+                  } else {
+                    toggleCard(client.logo);
+                  }
+                  pointerType.current = null;
+                }}
                 onKeyDown={(event) => handleKeyDown(client.logo, event)}
               >
                 <div className={styles.cardInner}>

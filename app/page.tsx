@@ -9,7 +9,7 @@ import { Process } from "./sections/home/Process/Process";
 import { Trust } from "./sections/home/Trust/Trust";
 import { WhyUs } from "./sections/home/WhyUs/WhyUs";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 const SITE_URL = "https://www.exspert-audit.ru";
 
@@ -20,7 +20,7 @@ const organizationSchema = {
   name: "Эксперт-Аудит",
   legalName: "ООО «Эксперт-Аудит»",
   url: `${SITE_URL}/`,
-  logo: `${SITE_URL}/favicon.svg`,
+  logo: `${SITE_URL}/icons/favicon.svg`,
   image: `${SITE_URL}/images/og-image.jpg`,
   description:
     "Аудиторская компания «Эксперт-Аудит». Аудит, налоговый и бухгалтерский консалтинг, кадровый аудит и финансово-экономическая экспертиза для бизнеса.",

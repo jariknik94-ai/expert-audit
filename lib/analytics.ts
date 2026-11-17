@@ -3,15 +3,28 @@ type AnalyticsEventParams = Record<
   string | number | boolean | undefined
 >;
 
+export const METRIKA_ID = 97203330;
+export const METRIKA_READY_EVENT = "yandex-metrika-ready";
+
 export function trackEvent(
   eventName: string,
   params?: AnalyticsEventParams,
 ): void {
-  if (typeof window === "undefined" || typeof window.gtag !== "function") {
-    return;
-  }
+  if (typeof window === "undefined") return;
 
-  window.gtag("event", eventName, params);
+  window.gtag?.("event", eventName, params);
+
+  const sendMetrikaGoal = () => {
+    window.ym?.(METRIKA_ID, "reachGoal", eventName, params);
+  };
+
+  if (window.__yandexMetrikaReady) {
+    sendMetrikaGoal();
+  } else {
+    window.addEventListener(METRIKA_READY_EVENT, sendMetrikaGoal, {
+      once: true,
+    });
+  }
 }
 
 export function trackPhoneClick(location: string): void {

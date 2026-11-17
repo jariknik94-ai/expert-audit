@@ -6,7 +6,20 @@ on:
       - main
 
 jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run check
+      - run: npm run build
+
   deploy:
+    needs: check
     runs-on: ubuntu-latest
 
     steps:
@@ -27,7 +40,7 @@ jobs:
             cd /var/www/expert-audit-site
 
             git fetch --all
-            git reset --hard origin/main
+            git reset --hard ${{ github.sha }}
             git clean -fd
 
             echo "📦 Installing dependencies..."

@@ -43,8 +43,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: OG_IMAGE,
-        width: 1200,
-        height: 630,
+        width: 1424,
+        height: 752,
         alt: "Контакты аудиторской компании «Эксперт-Аудит»",
       },
     ],
