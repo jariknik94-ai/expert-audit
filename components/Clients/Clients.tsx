@@ -64,7 +64,7 @@ export function Clients() {
               : styles.clientItem;
 
             return (
-              <article
+              <div
                 key={client.logo}
                 className={className}
                 role="button"
@@ -117,7 +117,7 @@ export function Clients() {
                     <p>{client.description}</p>
                   </div>
                 </div>
-              </article>
+              </div>
             );
           })}
         </div>

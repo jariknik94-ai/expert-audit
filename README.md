@@ -4,7 +4,7 @@
 
 **Сайт:** [exspert-audit.ru](https://www.exspert-audit.ru/)
 
-**Текущая версия:** 1.0.2 · [История релизов](https://github.com/jariknik94-ai/expert-audit/releases)
+**Текущая версия:** 1.0.3 · [История релизов](https://github.com/jariknik94-ai/expert-audit/releases)
 
 ## 🛠️ Технологии
 
